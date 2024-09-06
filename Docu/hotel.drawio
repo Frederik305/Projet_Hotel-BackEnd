@@ -1,0 +1,119 @@
+<mxfile host="65bd71144e">
+    <diagram name="Page-1" id="hqLaWHnOOQvXyoP32C3B">
+        <mxGraphModel dx="1386" dy="787" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="827" pageHeight="1169" math="0" shadow="0">
+            <root>
+                <mxCell id="0"/>
+                <mxCell id="1" parent="0"/>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-7" value="Client" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="200" width="220" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-8" value="+Prénom&lt;br&gt;+Nom&lt;br&gt;+Adresse résidence&lt;div&gt;+Téléphone mobile&lt;/div&gt;&lt;div&gt;+Courriel&lt;/div&gt;&lt;div&gt;+Mot de passe&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="3N78Oy3zfKdalMIdYhzp-7" vertex="1">
+                    <mxGeometry y="50" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-9" value="Chambre" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="730" y="200" width="220" height="150" as="geometry">
+                        <mxRectangle x="730" y="190" width="100" height="50" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-10" value="+Numéro de porte&lt;br&gt;+Type&lt;br&gt;&lt;div&gt;+État&lt;/div&gt;&lt;div&gt;+Autres informations&lt;br&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="3N78Oy3zfKdalMIdYhzp-9" vertex="1">
+                    <mxGeometry y="50" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-13" value="Type Chambre" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="730" y="480" width="220" height="150" as="geometry">
+                        <mxRectangle x="730" y="480" width="130" height="50" as="alternateBounds"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-14" value="+Nom du type&lt;div&gt;+Prix plancher&lt;div&gt;+Prix plafond&lt;/div&gt;+Description&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="3N78Oy3zfKdalMIdYhzp-13" vertex="1">
+                    <mxGeometry y="50" width="220" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-19" value="" style="endArrow=none;html=1;rounded=0;exitX=1;exitY=0.5;exitDx=0;exitDy=0;entryX=-0.018;entryY=0.43;entryDx=0;entryDy=0;entryPerimeter=0;" parent="1" source="3N78Oy3zfKdalMIdYhzp-8" target="3N78Oy3zfKdalMIdYhzp-27" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="290" y="480" as="sourcePoint"/>
+                        <mxPoint x="410" y="450" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-20" value="N" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" parent="3N78Oy3zfKdalMIdYhzp-19" connectable="0" vertex="1">
+                    <mxGeometry x="1" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-26" value="Réservation" style="swimlane;childLayout=stackLayout;horizontal=1;startSize=50;horizontalStack=0;rounded=1;fontSize=14;fontStyle=0;strokeWidth=2;resizeParent=0;resizeLast=1;shadow=0;dashed=0;align=center;arcSize=4;whiteSpace=wrap;html=1;" parent="1" vertex="1">
+                    <mxGeometry x="411.5" y="200" width="170" height="150" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-27" value="+Date début&lt;div&gt;+Date fin&lt;/div&gt;&lt;div&gt;+Prix par jour&lt;/div&gt;&lt;div&gt;+Autres informations&lt;br&gt;&lt;div&gt;&lt;div&gt;&lt;div&gt;&lt;br&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;&lt;/div&gt;" style="align=left;strokeColor=none;fillColor=none;spacingLeft=4;fontSize=12;verticalAlign=top;resizable=0;rotatable=0;part=1;html=1;" parent="3N78Oy3zfKdalMIdYhzp-26" vertex="1">
+                    <mxGeometry y="50" width="170" height="100" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-28" value="" style="endArrow=none;html=1;rounded=0;entryX=-0.009;entryY=0.36;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0.41;exitDx=0;exitDy=0;exitPerimeter=0;" parent="1" source="3N78Oy3zfKdalMIdYhzp-27" target="3N78Oy3zfKdalMIdYhzp-10" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="584" y="470" as="sourcePoint"/>
+                        <mxPoint x="744" y="470" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-29" value="1" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" parent="3N78Oy3zfKdalMIdYhzp-28" connectable="0" vertex="1">
+                    <mxGeometry x="1" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-30" value="" style="endArrow=none;html=1;rounded=0;entryX=0.5;entryY=0;entryDx=0;entryDy=0;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="1" source="3N78Oy3zfKdalMIdYhzp-10" target="3N78Oy3zfKdalMIdYhzp-13" edge="1">
+                    <mxGeometry relative="1" as="geometry">
+                        <mxPoint x="840" y="390" as="sourcePoint"/>
+                        <mxPoint x="984" y="395" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-31" value="1" style="resizable=0;html=1;whiteSpace=wrap;align=right;verticalAlign=bottom;" parent="3N78Oy3zfKdalMIdYhzp-30" connectable="0" vertex="1">
+                    <mxGeometry x="1" relative="1" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-33" value="Client" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="96.5" y="550" width="60" height="90" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-34" value="Admin&lt;div&gt;&lt;br&gt;&lt;/div&gt;" style="shape=umlActor;verticalLabelPosition=bottom;verticalAlign=top;html=1;outlineConnect=0;" parent="1" vertex="1">
+                    <mxGeometry x="50" y="800" width="50" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-36" value="Gérer compte" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="196.5" y="460" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-37" value="Connecter à son compte" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="196.5" y="530" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-38" value="Effectuer une réservation" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="206.5" y="600" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-39" value="Modifier réservation" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="311.5" y="460" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-40" value="Canceller une réservation" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="301.5" y="525" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-41" value="Effectuer une réservation" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="255" y="860" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-42" value="Modifier réservation" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="250" y="790" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-43" value="Canceller une réservation" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="359" y="780" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-44" value="Gérer des chambres" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="860" width="110" height="70" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-45" value="Connecter à son compte" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="140" y="790" width="100" height="60" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-46" value="Gérer compte des clients" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="364" y="850" width="116" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-47" value="Recevoir/visualiser des rapports" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="480" y="780" width="116" height="80" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-48" value="Recevoir des confirmations et des reminders" style="ellipse;shape=cloud;whiteSpace=wrap;html=1;align=center;" parent="1" vertex="1">
+                    <mxGeometry x="301.5" y="590" width="130" height="110" as="geometry"/>
+                </mxCell>
+                <mxCell id="3N78Oy3zfKdalMIdYhzp-49" value="" style="endArrow=none;dashed=1;html=1;dashPattern=1 3;strokeWidth=2;rounded=0;" parent="1" edge="1">
+                    <mxGeometry width="50" height="50" relative="1" as="geometry">
+                        <mxPoint x="70" y="730" as="sourcePoint"/>
+                        <mxPoint x="610" y="730" as="targetPoint"/>
+                    </mxGeometry>
+                </mxCell>
+                <mxCell id="TIGKuYiHQZjl3IW9Sk1u-1" value="&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;Besoins d'affaires&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;b style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px;&quot;&gt;- Usager&lt;/b&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt; doit pouvoir créer un compte et se&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;connecter.&lt;/span&gt;&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;b style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px;&quot;&gt;- Usager&lt;/b&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt; doit pouvoir réserver une plage&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;horaire pour une de 3 types de chambres. Les prix doivent être affichés. Un&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;rabais est donné selon la durée de la location.&amp;nbsp;&lt;/span&gt;&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;b style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px;&quot;&gt;- Usager&lt;/b&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt; doit être capable de&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;modifier/annuler sa réservation.&amp;nbsp;&lt;/span&gt;&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;b style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px;&quot;&gt;- Usager&lt;/b&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt; doit recevoir un courriel et un&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;texto de confirmation lors de chaque réservation, modification et annulation.&amp;nbsp;&lt;/span&gt;&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;b style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px;&quot;&gt;- Admin&lt;/b&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt; doit pouvoir se connecter et voir&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;toutes les réservations.&amp;nbsp;&lt;/span&gt;&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;b style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px;&quot;&gt;- Admin&lt;/b&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt; doit pouvoir gérer le prix des&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;chambres à louer.&amp;nbsp;&lt;/span&gt;&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;b style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px;&quot;&gt;- Admin&lt;/b&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt; doit pouvoir modifier les&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;réservations.&amp;nbsp;&lt;/span&gt;&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;b style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px;&quot;&gt;- Admin&lt;/b&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt; doit pouvoir consulter les&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;informations des usagers.&amp;nbsp;&lt;/span&gt;&lt;/h1&gt;&lt;h1 style=&quot;margin-top: 0px;&quot;&gt;&lt;b style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px;&quot;&gt;- Admin&lt;/b&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt; doit recevoir un rapport quotidien&amp;nbsp;&lt;/span&gt;&lt;span style=&quot;text-indent: -18pt; background-color: initial; font-size: 12px; font-weight: normal;&quot;&gt;des réservations de la journée. (Si on a le temps)&lt;/span&gt;&lt;/h1&gt;&lt;p&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;br&gt;&lt;/p&gt;" style="text;html=1;whiteSpace=wrap;overflow=hidden;rounded=0;" parent="1" vertex="1">
+                    <mxGeometry x="1030" y="80" width="340" height="630" as="geometry"/>
+                </mxCell>
+            </root>
+        </mxGraphModel>
+    </diagram>
+</mxfile>
