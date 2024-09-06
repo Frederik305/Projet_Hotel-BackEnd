@@ -1,20 +1,20 @@
 {
   "format": 1,
   "restore": {
-    "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj": {}
+    "C:\\Users\\2238026\\Documents\\GitHub\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj": {}
   },
   "projects": {
-    "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj": {
+    "C:\\Users\\2238026\\Documents\\GitHub\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj",
+        "projectUniqueName": "C:\\Users\\2238026\\Documents\\GitHub\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj",
         "projectName": "Projet_Hotel_CodeBase",
-        "projectPath": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj",
-        "packagesPath": "C:\\Users\\2142220\\.nuget\\packages\\",
-        "outputPath": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\obj\\",
+        "projectPath": "C:\\Users\\2238026\\Documents\\GitHub\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj",
+        "packagesPath": "C:\\Users\\2238026\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\2238026\\Documents\\GitHub\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\obj\\",
         "projectStyle": "PackageReference",
         "configFilePaths": [
-          "C:\\Users\\2142220\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\2238026\\AppData\\Roaming\\NuGet\\NuGet.Config",
           "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
         ],
         "originalTargetFrameworks": [
