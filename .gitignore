@@ -397,3 +397,14 @@ FodyWeavers.xsd
 
 # JetBrains Rider
 *.sln.iml
+Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/Projet_Hotel_CodeBase.csproj.nuget.g.props
+Projet_Hotel_CodeBase/.vs/Projet_Hotel_CodeBase/v17/.suo
+Projet_Hotel_CodeBase/.vs/Projet_Hotel_CodeBase/v17/DocumentLayout.json
+Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/Debug/net8.0/Projet_Hotel_CodeBase.AssemblyInfo.cs
+Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/Debug/net8.0/Projet_Hotel_CodeBase.AssemblyInfoInputs.cache
+Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/Debug/net8.0/Projet_Hotel_CodeBase.assets.cache
+Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/project.assets.json
+Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/project.nuget.cache
+Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/Projet_Hotel_CodeBase.csproj.nuget.dgspec.json
+Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/Projet_Hotel_CodeBase.csproj.nuget.g.props
+Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/Projet_Hotel_CodeBase.csproj.nuget.g.targets
