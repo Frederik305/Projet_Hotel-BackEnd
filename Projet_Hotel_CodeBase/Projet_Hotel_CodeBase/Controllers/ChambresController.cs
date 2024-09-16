@@ -1,5 +1,6 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage;
+using Projet_Hotel_CodeBase.Metier;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -19,16 +20,15 @@ namespace Projet_Hotel_CodeBase.Controllers
         [HttpGet(Name = "GetChambre")]
         public Chambre[] Get()
         {
-            using (var context = new MyDbContext())
-            {
-                // Supposons que vous voulez récupérer l'entité avec Id = 1
-                
-                var entite = context.Chambres.ToArray();
-                // Utilisation de la méthode Find pour récupérer l'entité
-                Console.WriteLine(entite);
-                return entite;
             
-             }
+            return new MetierChambre().GetChambres();
+
+            
+        }
+        [HttpGet("chambre/",Name = "GetChambreNum")]
+        public Chambre Get(short numChambre)
+        {
+            return new MetierChambre().GetChambre(numChambre);
         }
     }
 }
