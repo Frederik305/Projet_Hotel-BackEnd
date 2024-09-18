@@ -18,14 +18,11 @@
                 return chambreEntity;
             }
         }
-        public void addChambre(short CHA_numero, bool CHA_etat, string CHA_autreInfo, Guid FK_TYP_id)
+        public void addChambre(Chambre chamre)
         {
             using (var db = new MyDbContext())
-            {
-                var chambreEntity = new Chambre();
-                
-
-                db.Chambres.Add(chambreEntity);
+            {       
+                db.Chambres.Add(chamre);
                 db.SaveChanges();
             }
         }
