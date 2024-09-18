@@ -23,14 +23,10 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpPost(Name ="PostNewTypeChambre")]
-        public IActionResult Post(string nomTypeChambre,double prixPlancher, double prixPlafond,string desc) {
-            var typeChambreEntity = new TypeChambre();
-            typeChambreEntity.PkTypId= Guid.NewGuid();
-            typeChambreEntity.TypNomType= nomTypeChambre;
-            typeChambreEntity.TypPrixPlancher= prixPlancher;
-            typeChambreEntity.TypPrixPlafond= prixPlafond;
-            typeChambreEntity.TypDescription= desc;
-            return new MetierTypeChambre().SetTypeChambre(typeChambreEntity);
+        public void Post(TypeChambre typeChambre) {
+            
+            new MetierTypeChambre().AddTypeChambre(typeChambre);
+
 
 
         }

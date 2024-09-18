@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.EntityFrameworkCore.Storage;
 using Projet_Hotel_CodeBase.Metier;
+using Projet_Hotel_CodeBase.DTO;
+using Microsoft.EntityFrameworkCore;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -17,7 +19,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             _logger = logger;
         }
 
-        [HttpGet(Name = "GetChambre")]
+        [HttpGet(Name = "GetChambres")]
         public Chambre[] Get()
         {
             
@@ -25,10 +27,19 @@ namespace Projet_Hotel_CodeBase.Controllers
 
             
         }
-        [HttpGet("chambre/",Name = "GetChambreNum")]
+        [HttpGet("chambre/",Name = "GetChambreByNum")]
         public Chambre Get(short numChambre)
         {
             return new MetierChambre().GetChambre(numChambre);
         }
+
+        
+        [HttpPost("/CreeChambre", Name = "CreeChambre")]
+        public Chambre CreateChambre([FromBody] ChambreDTO chambre)
+        {
+            
+            return new MetierChambre().addChambre(chambre);
+        }
+
     }
 }

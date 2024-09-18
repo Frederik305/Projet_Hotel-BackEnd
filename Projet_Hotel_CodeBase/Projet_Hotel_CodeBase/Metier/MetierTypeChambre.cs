@@ -10,16 +10,20 @@
 
             }
         }
-        public void SetTypeChambre(TypeChambre typeChambreEntity)
+        public void AddTypeChambre(TypeChambre typeChambre)
         {
            
                 using (var context = new MyDbContext())
                 {
-                    context.TypeChambres.Add(typeChambreEntity);
+                    context.TypeChambres.Add(typeChambre);
                     context.SaveChanges(); // Sauvegarde les changements dans la base de données
                 }
-                
+            
             }
+        public void GetTypeChambre(string nomTypeChambre)
+        {
+
+        }
             
         
     }
