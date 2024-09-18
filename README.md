@@ -8,6 +8,8 @@ installer GitHub Desktop -> https://central.github.com/deployments/desktop/deskt
 
 Cloner le repository GitHub -> https://github.com/Frederik305/Projet_Hotel.git
 
+Installer le NuGet package Microsoft.EntityFrameworkCore dans le projet visual studio 2022 si n'est pas installer
+
 Rejoindre le projet JIRA et se créer un compte ou se connecter à son compte JIRA- https://gaspe-on-top.atlassian.net/jira/software/projects/KAN/boards/1
 
 Créer sa branche GitHub sur GitHub Desktop
