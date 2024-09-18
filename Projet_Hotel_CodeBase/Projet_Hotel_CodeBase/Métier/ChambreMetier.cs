@@ -23,11 +23,7 @@
             using (var db = new MyDbContext())
             {
                 var chambreEntity = new Chambre();
-                chambreEntity.PkChaId = Guid.NewGuid();
-                chambreEntity.ChaNumero = CHA_numero;
-                chambreEntity.ChaEtat = CHA_etat;
-                chambreEntity.ChaAutreInfo = CHA_autreInfo;
-                chambreEntity.FkTypId = FK_TYP_id;
+                
 
                 db.Chambres.Add(chambreEntity);
                 db.SaveChanges();

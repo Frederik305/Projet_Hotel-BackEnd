@@ -31,10 +31,10 @@ namespace Projet_Hotel_CodeBase.Controllers
             return new ChambreMetier().requestChambreByNum(numChambre);
         }
 
-        [HttpPost("/PostChambre", Name = "PostChambre")]
-        public void Post(short CHA_numero, bool CHA_etat, string CHA_autreInfo, Guid FK_TYP_id)
+        [HttpPost("/CreeChambre", Name = "CreeChambre")]
+        public void Post(Chambre chambre)
         {
-            new ChambreMetier().addChambre(CHA_numero, CHA_etat, CHA_autreInfo, FK_TYP_id);
+            new ChambreMetier().addChambre(chambre);
         }
     }
 }
