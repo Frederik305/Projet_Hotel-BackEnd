@@ -5,17 +5,12 @@ namespace Projet_Hotel_CodeBase.Metier
 {
     public class MetierReservation
     {
-        public void CancelReservation(ReservationDTO reservationDTO)
+        public void CancelReservation(Guid PkResACancel)
         {
             using (var context = new MyDbContext())
             {
-                var ReservationACanceller = new Reservation
-                {
-                    PkResId = reservationDTO.PkResId,
-
-
-                };
-                var reservation = context.Reservations.FirstOrDefault(r => r.PkResId == ReservationACanceller.PkResId);
+                
+                var reservation = context.Reservations.FirstOrDefault(r => r.PkResId == PkResACancel);
 
                 if (reservation != null)
                 {
@@ -27,14 +22,16 @@ namespace Projet_Hotel_CodeBase.Metier
             }
         }
 
-        public void ModifierReservation(Guid PkResAmodifier, ReservationDTO modifiedReservation)
+        public void ModifierReservation(Guid PkResAmodifier, DateTime dateDebutModifier, DateTime dateFinModifier)
         {
+            var res = new ReservationDTO { PkResId = PkResAmodifier };
             using (var context = new MyDbContext())
             {
 
-                var reservation = context.Reservations.FirstOrDefault(r => r.PkResId == PkResAmodifier);
-                reservation.ResDateDebut = modifiedReservation.ResDateDebut;
-                reservation.ResDateFin = modifiedReservation.ResDateFin;
+                var reservation = context.Reservations.FirstOrDefault(r => r.PkResId == res.PkResId);
+
+                reservation.ResDateDebut = dateDebutModifier;
+                reservation.ResDateFin = dateFinModifier;
                 context.SaveChanges();
 
 

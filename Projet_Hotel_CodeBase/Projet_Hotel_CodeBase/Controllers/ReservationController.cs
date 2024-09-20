@@ -19,9 +19,9 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpPost("modifierReservation")]
-        public void ModifierReservation(Guid PkResAmodifier, [FromBody]ReservationDTO reservationModifier)
+        public void ModifierReservation(Guid PkResAmodifier, DateTime dateDebut, DateTime dateFin)
         {
-            new MetierReservation().ModifierReservation(PkResAmodifier, reservationModifier);
+            new MetierReservation().ModifierReservation(PkResAmodifier, dateDebut,dateFin);
 
 
 
@@ -39,6 +39,11 @@ namespace Projet_Hotel_CodeBase.Controllers
         public ReservationDTO[] GetReservations()
         {
             return new MetierReservation().GetReservations();
+        }
+        [HttpDelete("{PkResACancel}")]
+        public void CancelReservation(Guid PkResACancel)
+        {
+            new MetierReservation().CancelReservation(PkResACancel);
         }
 
     }

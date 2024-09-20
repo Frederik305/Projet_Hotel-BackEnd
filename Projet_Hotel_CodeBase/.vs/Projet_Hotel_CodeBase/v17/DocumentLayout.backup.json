@@ -3,10 +3,6 @@
   "WorkspaceRootPath": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\",
   "Documents": [
     {
-      "AbsoluteMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|c:\\users\\2142220\\documents\\progdonnees\\projet_hotel\\projet_hotel_codebase\\projet_hotel_codebase\\dto\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|solutionrelative:projet_hotel_codebase\\dto\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
-    },
-    {
       "AbsoluteMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|c:\\users\\2142220\\documents\\progdonnees\\projet_hotel\\projet_hotel_codebase\\projet_hotel_codebase\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|solutionrelative:projet_hotel_codebase\\controllers\\reservationcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
@@ -15,12 +11,16 @@
       "RelativeMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|solutionrelative:projet_hotel_codebase\\metier\\metierreservation.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
-      "AbsoluteMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|c:\\users\\2142220\\documents\\progdonnees\\projet_hotel\\projet_hotel_codebase\\projet_hotel_codebase\\metier\\metierchambre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
-      "RelativeMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|solutionrelative:projet_hotel_codebase\\metier\\metierchambre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+      "AbsoluteMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|c:\\users\\2142220\\documents\\progdonnees\\projet_hotel\\projet_hotel_codebase\\projet_hotel_codebase\\dto\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|solutionrelative:projet_hotel_codebase\\dto\\reservationdto.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|c:\\users\\2142220\\documents\\progdonnees\\projet_hotel\\projet_hotel_codebase\\projet_hotel_codebase\\metier\\metierclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|solutionrelative:projet_hotel_codebase\\metier\\metierclient.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|c:\\users\\2142220\\documents\\progdonnees\\projet_hotel\\projet_hotel_codebase\\projet_hotel_codebase\\metier\\metierchambre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|solutionrelative:projet_hotel_codebase\\metier\\metierchambre.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
       "AbsoluteMoniker": "D:0:0:{2C175C25-FF8F-4EAE-8CEE-A7200AC043F4}|Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase.csproj|c:\\users\\2142220\\documents\\progdonnees\\projet_hotel\\projet_hotel_codebase\\projet_hotel_codebase\\controllers\\clientcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
@@ -37,25 +37,25 @@
       "VerticalTabListWidth": 256,
       "DocumentGroups": [
         {
-          "DockedWidth": 282,
-          "SelectedChildIndex": 0,
+          "DockedWidth": 206,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 0,
+              "DocumentIndex": 2,
               "Title": "ReservationDTO.cs",
               "DocumentMoniker": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\DTO\\ReservationDTO.cs",
               "RelativeDocumentMoniker": "Projet_Hotel_CodeBase\\DTO\\ReservationDTO.cs",
               "ToolTip": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\DTO\\ReservationDTO.cs",
               "RelativeToolTip": "Projet_Hotel_CodeBase\\DTO\\ReservationDTO.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAA0AAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABUAAAAUAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-20T17:08:07.361Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 3,
+              "DocumentIndex": 4,
               "Title": "MetierChambre.cs",
               "DocumentMoniker": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Metier\\MetierChambre.cs",
               "RelativeDocumentMoniker": "Projet_Hotel_CodeBase\\Metier\\MetierChambre.cs",
@@ -81,13 +81,13 @@
             },
             {
               "$type": "Document",
-              "DocumentIndex": 2,
+              "DocumentIndex": 1,
               "Title": "MetierReservation.cs",
               "DocumentMoniker": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Metier\\MetierReservation.cs",
               "RelativeDocumentMoniker": "Projet_Hotel_CodeBase\\Metier\\MetierReservation.cs",
               "ToolTip": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Metier\\MetierReservation.cs",
               "RelativeToolTip": "Projet_Hotel_CodeBase\\Metier\\MetierReservation.cs",
-              "ViewState": "AgIAAB8AAAAAAAAAAAAQwEcAAAABAAAAAAAAAA==",
+              "ViewState": "AgIAAAIAAAAAAAAAAAAIwAwAAABkAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-20T17:14:28.005Z",
               "EditorCaption": ""
@@ -108,31 +108,31 @@
           ]
         },
         {
-          "DockedWidth": 118,
+          "DockedWidth": 194,
           "SelectedChildIndex": 0,
           "Children": [
             {
               "$type": "Document",
-              "DocumentIndex": 1,
+              "DocumentIndex": 0,
               "Title": "ReservationController.cs",
               "DocumentMoniker": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Controllers\\ReservationController.cs",
               "RelativeDocumentMoniker": "Projet_Hotel_CodeBase\\Controllers\\ReservationController.cs",
-              "ToolTip": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Controllers\\ReservationController.cs",
-              "RelativeToolTip": "Projet_Hotel_CodeBase\\Controllers\\ReservationController.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAACAAAABBAAAAAAAAAA==",
+              "ToolTip": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Controllers\\ReservationController.cs*",
+              "RelativeToolTip": "Projet_Hotel_CodeBase\\Controllers\\ReservationController.cs*",
+              "ViewState": "AgIAAA4AAAAAAAAAAAAQwCoAAAAiAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-20T17:40:32.406Z",
               "EditorCaption": ""
             },
             {
               "$type": "Document",
-              "DocumentIndex": 4,
+              "DocumentIndex": 3,
               "Title": "MetierClient.cs",
               "DocumentMoniker": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Metier\\MetierClient.cs",
               "RelativeDocumentMoniker": "Projet_Hotel_CodeBase\\Metier\\MetierClient.cs",
               "ToolTip": "C:\\Users\\2142220\\Documents\\ProgDonnees\\Projet_Hotel\\Projet_Hotel_CodeBase\\Projet_Hotel_CodeBase\\Metier\\MetierClient.cs",
               "RelativeToolTip": "Projet_Hotel_CodeBase\\Metier\\MetierClient.cs",
-              "ViewState": "AgIAABoAAAAAAAAAAAAQwCIAAAAAAAAAAAAAAA==",
+              "ViewState": "AgIAABEAAAAAAAAAAAAQwEIAAAAQAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
               "WhenOpened": "2024-09-18T18:58:02.997Z",
               "EditorCaption": ""
