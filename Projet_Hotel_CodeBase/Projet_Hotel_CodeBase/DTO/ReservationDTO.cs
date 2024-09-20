@@ -7,10 +7,9 @@
         public DateTime ResDateFin { get; set; }
         public decimal ResPrixJour { get; set; }
         public string ResAutre { get; set; }
-        public Guid FkCliId { get; set; }
-        public Guid FkChaId { get; set; }
-        public ChambreDTO Chambre { get; set; }
-        public ClientDTO Client { get; set; }
+        public short ResChambre { get; set; }
+        public  string ResCliCourriel { get; set; }
+
     }
 
 }

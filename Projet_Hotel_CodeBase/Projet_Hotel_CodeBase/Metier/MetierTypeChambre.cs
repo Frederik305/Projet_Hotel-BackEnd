@@ -20,10 +20,7 @@
                 }
             
             }
-        public void GetTypeChambre(string nomTypeChambre)
-        {
-
-        }
+        
             
         
     }

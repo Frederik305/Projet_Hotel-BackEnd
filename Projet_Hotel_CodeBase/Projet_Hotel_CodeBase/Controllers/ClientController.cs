@@ -1,5 +1,8 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using Projet_Hotel_CodeBase.DTO;
+using Projet_Hotel_CodeBase.Metier;
+using System.Net;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -22,16 +25,32 @@ namespace Projet_Hotel_CodeBase.Controllers
        
 
        
-        [HttpPost("postClient")]
-        public void EditClient(Client client,string prenom, string nom, string address, string telephone, string courriel, string motDePasse)
+        [HttpPost("AddClient")]
+        public void AddClient([FromBody]ClientDTO clientDTO)
         {
             
-                
+            new MetierClient().AddClient(clientDTO);
             
            
         }
+        [HttpGet("GetClient")]
+        public ClientDTO[] GetClient([FromQuery] string CliNom, [FromQuery] string CliPrenom)
+        {
 
-       
+            return new MetierClient().GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
+
+
+        }
+        [HttpGet("GetClients")]
+        public ClientDTO[] GetClients()
+        {
+
+            return new MetierClient().GetClients();
+
+
+        }
+
+
 
     }
 }

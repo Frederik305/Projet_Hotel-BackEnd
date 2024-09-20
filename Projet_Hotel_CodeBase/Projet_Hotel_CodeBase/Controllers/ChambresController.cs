@@ -35,10 +35,10 @@ namespace Projet_Hotel_CodeBase.Controllers
 
         
         [HttpPost("/CreeChambre", Name = "CreeChambre")]
-        public Chambre CreateChambre([FromBody] ChambreDTO chambre)
+        public void CreateChambre([FromBody] ChambreDTO chambre)
         {
             
-            return new MetierChambre().addChambre(chambre);
+             new MetierChambre().AddChambre(chambre);
         }
 
     }

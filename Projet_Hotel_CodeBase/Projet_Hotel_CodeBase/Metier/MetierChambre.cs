@@ -9,12 +9,11 @@ namespace Projet_Hotel_CodeBase.Metier
         {
             using (var context = new MyDbContext())
             {
-                // Supposons que vous voulez récupérer l'entité avec Id = 1
+                
 
-                var entite = context.Chambres.ToArray();
-                // Utilisation de la méthode Find pour récupérer l'entité
-                Console.WriteLine(entite);
-                return entite;
+                
+                
+                return context.Chambres.ToArray();
 
             }
         }
@@ -31,7 +30,7 @@ namespace Projet_Hotel_CodeBase.Metier
 
             }
         }
-        public void addChambre(ChambreDTO chambreDTO)
+        public void AddChambre(ChambreDTO chambreDTO)
         {
             using (var context = new MyDbContext())
             {
