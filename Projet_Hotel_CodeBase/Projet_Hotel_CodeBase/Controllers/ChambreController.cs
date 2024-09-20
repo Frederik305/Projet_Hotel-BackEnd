@@ -3,6 +3,7 @@ using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Storage;
+using Projet_Hotel_CodeBase.DTO;
 using Projet_Hotel_CodeBase.Métier;
 using System.Linq;
 
@@ -32,9 +33,9 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpPost("/CreeChambre", Name = "CreeChambre")]
-        public void Post(Chambre chambre)
+        public void Post(ChambreDTO chambreDTO)
         {
-            new ChambreMetier().addChambre(chambre);
+            new ChambreMetier().addChambre(chambreDTO);
         }
     }
 }
