@@ -29,7 +29,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         public void AddClient([FromBody]ClientDTO clientDTO)
         {
             
-            new MetierClient().AddClient(clientDTO);
+            new ClientMetier().AddClient(clientDTO);
             
            
         }
@@ -37,7 +37,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         public ClientDTO[] GetClient([FromQuery] string CliNom, [FromQuery] string CliPrenom)
         {
 
-            return new MetierClient().GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
+            return new ClientMetier().GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
 
 
         }
@@ -45,7 +45,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         public ClientDTO[] GetClients()
         {
 
-            return new MetierClient().GetClients();
+            return new ClientMetier().GetClients();
 
 
         }

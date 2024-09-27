@@ -1,6 +1,6 @@
 ﻿namespace Projet_Hotel_CodeBase.Metier
 {
-    public class MetierTypeChambre
+    public class TypeChambreMetier
     {
         public TypeChambre[] GetTypeChambres()
         {

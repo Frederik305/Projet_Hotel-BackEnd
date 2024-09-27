@@ -2,7 +2,7 @@
 
 namespace Projet_Hotel_CodeBase.Metier
 {
-    public class MetierClient
+    public class ClientMetier
     {
         public void AddClient(ClientDTO clientDTO)
         {

@@ -3,7 +3,7 @@
 using Projet_Hotel_CodeBase.DTO;
 namespace Projet_Hotel_CodeBase.Metier
 {
-    public class MetierChambre
+    public class ChambreMetier
     {
         public Chambre[] GetChambres()
         {

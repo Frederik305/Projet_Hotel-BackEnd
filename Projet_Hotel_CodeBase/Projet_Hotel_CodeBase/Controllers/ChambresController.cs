@@ -23,14 +23,14 @@ namespace Projet_Hotel_CodeBase.Controllers
         public Chambre[] Get()
         {
             
-            return new MetierChambre().GetChambres();
+            return new ChambreMetier().GetChambres();
 
             
         }
         [HttpGet("chambre/",Name = "GetChambreByNum")]
         public Chambre Get(short numChambre)
         {
-            return new MetierChambre().GetChambre(numChambre);
+            return new ChambreMetier().GetChambre(numChambre);
         }
 
         
@@ -38,7 +38,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         public void CreateChambre([FromBody] ChambreDTO chambre)
         {
             
-             new MetierChambre().AddChambre(chambre);
+             new ChambreMetier().AddChambre(chambre);
         }
 
     }

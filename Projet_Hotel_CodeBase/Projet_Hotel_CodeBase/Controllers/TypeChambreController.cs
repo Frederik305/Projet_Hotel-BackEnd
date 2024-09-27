@@ -19,13 +19,13 @@ namespace Projet_Hotel_CodeBase.Controllers
         [HttpGet(Name = "GetTypeChambre")]
         public TypeChambre[] Get()
         {
-            return new MetierTypeChambre().GetTypeChambres();
+            return new TypeChambreMetier().GetTypeChambres();
         }
 
         [HttpPost(Name ="PostNewTypeChambre")]
         public void Post(TypeChambre typeChambre) {
             
-            new MetierTypeChambre().AddTypeChambre(typeChambre);
+            new TypeChambreMetier().AddTypeChambre(typeChambre);
 
 
 
