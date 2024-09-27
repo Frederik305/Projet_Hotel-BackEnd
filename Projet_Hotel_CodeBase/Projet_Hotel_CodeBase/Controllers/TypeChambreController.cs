@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projet_Hotel_CodeBase.Metier;
+using Projet_Hotel_CodeBase.DTO;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -17,13 +18,13 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpGet(Name = "GetTypeChambre")]
-        public TypeChambre[] Get()
+        public TypeChambreDTO[] Get()
         {
             return new TypeChambreMetier().GetTypeChambres();
         }
 
         [HttpPost(Name ="PostNewTypeChambre")]
-        public void Post(TypeChambre typeChambre) {
+        public void Post(TypeChambreDTO typeChambre) {
             
             new TypeChambreMetier().AddTypeChambre(typeChambre);
 

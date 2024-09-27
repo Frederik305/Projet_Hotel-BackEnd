@@ -40,7 +40,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         {
             return new ReservationMetier().GetReservations();
         }
-        [HttpDelete("{PkResACancel}")]
+        [HttpPost("CancelReservation")]
         public void CancelReservation(Guid PkResACancel)
         {
             new ReservationMetier().CancelReservation(PkResACancel);
