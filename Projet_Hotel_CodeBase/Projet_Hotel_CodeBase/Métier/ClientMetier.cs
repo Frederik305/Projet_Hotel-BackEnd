@@ -14,6 +14,13 @@ namespace Projet_Hotel_CodeBase.Métier
                 /*var client = db.Clients
              .FirstOrDefault(tc => tc.TypNomType == clientDTO.TypeChambre);*/
 
+                var client = db.Clients
+             .FirstOrDefault(c => c.CliCourriel == clientDTO.CliCourriel);
+                if( client != null )
+                {
+                    return;
+                }
+
                 var newClient = new Client
                 {
                     PkCliId = Guid.NewGuid(),
@@ -23,7 +30,6 @@ namespace Projet_Hotel_CodeBase.Métier
                     CliTelephoneMobile = clientDTO.CliTelephoneMobile,
                     CliCourriel = clientDTO.CliCourriel,
                     CliMotDePasse = clientDTO.CliMotDePasse,
-
                 };
 
                 db.Clients.Add(newClient);
