@@ -14,6 +14,7 @@ namespace Projet_Hotel_CodeBase.Métier
                 /*var client = db.Clients
              .FirstOrDefault(tc => tc.TypNomType == clientDTO.TypeChambre);*/
 
+                // Regarde si un client existe deja avec la meme addresse de courriel
                 var client = db.Clients
              .FirstOrDefault(c => c.CliCourriel == clientDTO.CliCourriel);
                 if( client != null )
