@@ -6,7 +6,7 @@ namespace Projet_Hotel_CodeBase.Métier
 {
     public class ChambreMetier
     {
-        public ChambreDTO[] requestChambres()
+        public ChambreDTO[] RequestChambres()
         {
             using (var db = new MyDbContext())
             {
@@ -21,7 +21,7 @@ namespace Projet_Hotel_CodeBase.Métier
             }
         }
 
-        public ChambreDTO[] requestChambreByNum(short numChambre)
+        public ChambreDTO[] RequestChambreByNum(short numChambre)
         {
             using (var db = new MyDbContext())
             {
@@ -38,7 +38,7 @@ namespace Projet_Hotel_CodeBase.Métier
                 return chambreDTO;
             }
         }
-        public void addChambre(ChambreDTO chambreDTO)
+        public void AddChambre(ChambreDTO chambreDTO)
         {
             using (var db = new MyDbContext())
             {

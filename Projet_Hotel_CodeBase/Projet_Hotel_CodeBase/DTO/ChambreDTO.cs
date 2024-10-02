@@ -6,7 +6,7 @@
         public short ChaNumero { get; set; } // CHA_numero
         public bool ChaEtat { get; set; } // CHA_etat
         public string? ChaAutreInfo { get; set; } // CHA_autreInfo (length: 300)
-        public TypeChambre? typeChambre { get; set; } // FK_TYP_id
+        public TypeChambre? TypeChambre { get; set; } // FK_TYP_id
         public string? NomTypeChambre { get; set; }
     }
 }

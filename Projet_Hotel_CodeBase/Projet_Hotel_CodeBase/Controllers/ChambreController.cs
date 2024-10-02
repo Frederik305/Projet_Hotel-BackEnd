@@ -23,19 +23,19 @@ namespace Projet_Hotel_CodeBase.Controllers
         [HttpGet("/GetChambres", Name = "GetChambres")]
         public ChambreDTO[] Get() 
         {
-            return new ChambreMetier().requestChambres();
+            return new ChambreMetier().RequestChambres();
         }
 
         [HttpGet("/GetChambre/{numChambre}", Name = "GetChambreNum")]
         public ChambreDTO[] Get(short numChambre)
         {
-            return new ChambreMetier().requestChambreByNum(numChambre);
+            return new ChambreMetier().RequestChambreByNum(numChambre);
         }
 
         [HttpPost("/CreeChambre", Name = "CreeChambre")]
         public void Post(ChambreDTO chambreDTO)
         {
-            new ChambreMetier().addChambre(chambreDTO);
+            new ChambreMetier().AddChambre(chambreDTO);
         }
     }
 }
