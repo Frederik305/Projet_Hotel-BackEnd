@@ -9,7 +9,6 @@ namespace Projet_Hotel_CodeBase.Controllers
     [Route("[controller]")]
     public class TypeChambreController : ControllerBase
     {
-        // GET: TypeChambreController
         private readonly ILogger<TypeChambreController> _logger;
 
         public TypeChambreController(ILogger<TypeChambreController> logger)

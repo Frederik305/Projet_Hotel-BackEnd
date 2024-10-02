@@ -1,76 +1,67 @@
-﻿using Microsoft.EntityFrameworkCore;
-
+﻿using Microsoft.EntityFrameworkCore.Query.Internal;
 using Projet_Hotel_CodeBase.DTO;
-namespace Projet_Hotel_CodeBase.Metier
+using System.Linq;
+
+namespace Projet_Hotel_CodeBase.Métier
 {
     public class ChambreMetier
     {
-        public Chambre[] GetChambres()
+        public ChambreDTO[] requestChambres()
         {
-            using (var context = new MyDbContext())
+            using (var db = new MyDbContext())
             {
-                
-
-                
-                
-                return context.Chambres.ToArray();
-
+                return db.Chambres.Select(c => new ChambreDTO
+                {
+                    PkChaId = c.PkChaId,
+                    ChaNumero = c.ChaNumero,
+                    ChaEtat = c.ChaEtat,
+                    ChaAutreInfo = c.ChaAutreInfo,
+                    TypeChambre = c.TypeChambre,
+                }).ToArray();
             }
         }
-        public Chambre GetChambre(int numChambre)
+
+        public ChambreDTO[] requestChambreByNum(short numChambre)
         {
-            using (var context = new MyDbContext())
+            using (var db = new MyDbContext())
             {
-                // Supposons que vous voulez récupérer l'entité avec Id = 1
-
-                var entite = context.Chambres.Where(c => c.ChaNumero == numChambre).FirstOrDefault();
-                // Utilisation de la méthode Find pour récupérer l'entité
-
-                return entite;
-
+                var chambreDTO = db.Chambres
+                    .Where(c => c.ChaNumero == numChambre)
+                    .Select(c => new ChambreDTO
+                    {
+                        PkChaId = c.PkChaId,
+                        ChaNumero = c.ChaNumero,
+                        ChaEtat = c.ChaEtat,
+                        ChaAutreInfo = c.ChaAutreInfo,
+                        TypeChambre = c.TypeChambre,
+                    }).ToArray();
+                return chambreDTO;
             }
         }
-        public void AddChambre(ChambreDTO chambreDTO)
+        public void addChambre(ChambreDTO chambreDTO)
         {
-            using (var context = new MyDbContext())
+            using (var db = new MyDbContext())
             {
-                var typeChambre = context.TypeChambres
+                //var typeChambre = new TypeChambre();
+                //db.TypeChambres.Where(e => e.TypNomType.Equals(chambreDTO.TypeChambre));
+                var typeChambre = db.TypeChambres
              .FirstOrDefault(tc => tc.TypNomType == chambreDTO.NomTypeChambre);
-                
 
                 var nouvelleChambre = new Chambre
                 {
                     PkChaId = Guid.NewGuid(),
                     ChaAutreInfo = chambreDTO.ChaAutreInfo,
                     FkTypId = typeChambre.PkTypId,
-                    ChaEtat=chambreDTO.ChaEtat,
-                    ChaNumero=chambreDTO.ChaNumero,
-                    TypeChambre=typeChambre
-                    
+                    ChaEtat = chambreDTO.ChaEtat,
+                    ChaNumero = chambreDTO.ChaNumero,
+                    TypeChambre = typeChambre
                 };
-               
-                context.Chambres.Add(nouvelleChambre);
-                context.SaveChanges();
+
+                db.Chambres.Add(nouvelleChambre);
+                db.SaveChanges();
+
+                
             }
-            
-
-            /*
-
-            // Créer une nouvelle Chambre avec l'ID du TypeChambre trouvé
-            var nouvelleChambre = new Chambre
-            {
-                PkChambreId = Guid.NewGuid(),
-                NomChambre = chambreDto.NomChambre,
-                FkTypeChambreId = typeChambre.PkTypeChambreId
-            };
-
-            // Ajouter la nouvelle chambre à la base de données
-            _context.Chambres.Add(nouvelleChambre);
-            await _context.SaveChangesAsync();
-
-            return Ok(new { message = "Chambre créée avec succès", chambreId = nouvelleChambre.PkChambreId });*/
         }
     }
 }
-
-    

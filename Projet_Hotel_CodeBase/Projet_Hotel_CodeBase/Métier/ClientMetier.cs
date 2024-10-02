@@ -69,6 +69,19 @@ namespace Projet_Hotel_CodeBase.Metier
 
             }
         }
+        public void loggin(ClientDTO clientDTO)
+        {
+            using (var db = new MyDbContext())
+            {
+                var client = db.Clients
+             .FirstOrDefault(c => c.CliCourriel == clientDTO.CliCourriel && c.CliMotDePasse == clientDTO.CliMotDePasse);
+
+                if (client != null)
+                {
+                    Console.WriteLine($"utilisateur: " + clientDTO.CliCourriel);
+                }
+            }
+        }
 
     }
 }
