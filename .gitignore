@@ -398,6 +398,5 @@ FodyWeavers.xsd
 # JetBrains Rider
 *.sln.iml
 
-Projet_Hotel_CodeBase/.vs/Projet_Hotel_CodeBase/v17/.suo
-Projet_Hotel_CodeBase/.vs/Projet_Hotel_CodeBase/v17/DocumentLayout.json
+Projet_Hotel_CodeBase/.vs/
 Projet_Hotel_CodeBase/Projet_Hotel_CodeBase/obj/
