@@ -17,6 +17,7 @@ Faire un pull de la branche main vers sa branche
 Dans SSMS se connecter au serveur local SQL server, créer une nouvelle base de donnée nommée HotelDB et exécuté la requête SQL du fichier HotelDB.sql dans le gitHub pour créer les tables dans la BD. 
 Ensuite, exécuté la requête SQL du fichier script.sql également dans le gitHub pour insérer des chambres et des type de chambres dans la base de donnée. 
  
+Ouvrir le projet/solution qui se trouve dans la braanche git avec visual studio 2022
 
 Installer les packages suivant dans Visual Studio Community 2022: 
 Microsoft.AspNetCore.OpenApi 8.0.8,
