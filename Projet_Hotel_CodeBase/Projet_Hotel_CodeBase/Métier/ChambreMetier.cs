@@ -6,20 +6,36 @@ namespace Projet_Hotel_CodeBase.Métier
 {
     public class ChambreMetier
     {
-        public Chambre[] requestChambres()
+        public ChambreDTO[] requestChambres()
         {
             using (var db = new MyDbContext())
             {
-                return db.Chambres.ToArray();
+                return db.Chambres.Select(c => new ChambreDTO
+                {
+                    PkChaId = c.PkChaId,
+                    ChaNumero = c.ChaNumero,
+                    ChaEtat = c.ChaEtat,
+                    ChaAutreInfo = c.ChaAutreInfo,
+                    TypeChambre = c.TypeChambre,
+                }).ToArray();
             }
         }
 
-        public Chambre requestChambreByNum(short numChambre)
+        public ChambreDTO[] requestChambreByNum(short numChambre)
         {
             using (var db = new MyDbContext())
             {
-                var chambreEntity = db.Chambres.SingleOrDefault(c => c.ChaNumero == numChambre);
-                return chambreEntity;
+                var chambreDTO = db.Chambres
+                    .Where(c => c.ChaNumero == numChambre)
+                    .Select(c => new ChambreDTO
+                    {
+                        PkChaId = c.PkChaId,
+                        ChaNumero = c.ChaNumero,
+                        ChaEtat = c.ChaEtat,
+                        ChaAutreInfo = c.ChaAutreInfo,
+                        TypeChambre = c.TypeChambre,
+                    }).ToArray();
+                return chambreDTO;
             }
         }
         public void addChambre(ChambreDTO chambreDTO)
@@ -29,7 +45,7 @@ namespace Projet_Hotel_CodeBase.Métier
                 //var typeChambre = new TypeChambre();
                 //db.TypeChambres.Where(e => e.TypNomType.Equals(chambreDTO.TypeChambre));
                 var typeChambre = db.TypeChambres
-             .FirstOrDefault(tc => tc.TypNomType == chambreDTO.TypeChambre);
+             .FirstOrDefault(tc => tc.TypNomType == chambreDTO.NomTypeChambre);
 
                 var nouvelleChambre = new Chambre
                 {
@@ -39,7 +55,6 @@ namespace Projet_Hotel_CodeBase.Métier
                     ChaEtat = chambreDTO.ChaEtat,
                     ChaNumero = chambreDTO.ChaNumero,
                     TypeChambre = typeChambre
-
                 };
 
                 db.Chambres.Add(nouvelleChambre);

@@ -21,13 +21,13 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpGet("/GetChambres", Name = "GetChambres")]
-        public Chambre[] Get() 
+        public ChambreDTO[] Get() 
         {
             return new ChambreMetier().requestChambres();
         }
 
         [HttpGet("/GetChambre/{numChambre}", Name = "GetChambreNum")]
-        public Chambre Get(short numChambre)
+        public ChambreDTO[] Get(short numChambre)
         {
             return new ChambreMetier().requestChambreByNum(numChambre);
         }
