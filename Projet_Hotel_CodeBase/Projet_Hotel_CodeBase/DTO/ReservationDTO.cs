@@ -22,6 +22,10 @@ namespace Projet_Hotel_CodeBase.DTO
         [JsonIgnore]
         public string ClientName { get; set; }
 
+        [JsonIgnore]
+        Chambre chambre { get; set; }
+        public string numChambre { get; set; }
+
     }
 
 }
