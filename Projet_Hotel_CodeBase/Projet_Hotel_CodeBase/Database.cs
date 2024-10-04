@@ -115,7 +115,7 @@ namespace Projet_Hotel_CodeBase
         {
             if (!optionsBuilder.IsConfigured)
             {
-                optionsBuilder.UseSqlServer(@"data source=GA-VIR-2142220\SQLEXPRESS;initial catalog=HotelDB;trusted_connection=true;Integrated Security=True;Encrypt=False");
+                optionsBuilder.UseSqlServer(@"data source=localhost\SQLEXPRESS;initial catalog=HotelDB;trusted_connection=true;Integrated Security=True;Encrypt=False");
             }
         }
 
