@@ -1,16 +1,18 @@
 ﻿using Projet_Hotel_CodeBase.DTO;
+using Projet_Hotel_CodeBase.Métier;
 
 namespace Projet_Hotel_CodeBase.Metier
 {
     public class ClientMetier
     {
-        public void AddClient(ClientDTO clientDTO)
+        public ClientDTO AddClient(ClientDTO clientDTO)
         {
+            if (new ValidationsMetier().EmailExists(clientDTO))
+            {
+                throw new Exception("Courriel déja utiliser");
+            }
             using (var context = new MyDbContext())
             {
-
-
-
                 var nouveauClient = new Client
                 {
                     PkCliId = Guid.NewGuid(),
@@ -20,12 +22,21 @@ namespace Projet_Hotel_CodeBase.Metier
                     CliCourriel = clientDTO.CliCourriel,
                     CliMotDePasse = clientDTO.CliMotDePasse,
                     CliTelephoneMobile = clientDTO.CliTelephoneMobile
-
-
                 };
 
                 context.Clients.Add(nouveauClient);
                 context.SaveChanges();
+
+                return new ClientDTO()
+                {
+                    PkCliId = nouveauClient.PkCliId,
+                    CliNom = clientDTO.CliNom,
+                    CliPrenom = clientDTO.CliPrenom,
+                    CliAddresseResidence = clientDTO.CliAddresseResidence,
+                    CliCourriel = clientDTO.CliCourriel,
+                    CliMotDePasse = clientDTO.CliMotDePasse,
+                    CliTelephoneMobile = clientDTO.CliTelephoneMobile
+                };
             }
         }
         public ClientDTO[] GetClients()
@@ -71,17 +82,10 @@ namespace Projet_Hotel_CodeBase.Metier
         }
         public void loggin(ClientDTO clientDTO)
         {
-            using (var db = new MyDbContext())
+            if (new ValidationsMetier().EmailExists(clientDTO) && new ValidationsMetier().PasswordExists(clientDTO))
             {
-                var client = db.Clients
-             .FirstOrDefault(c => c.CliCourriel == clientDTO.CliCourriel && c.CliMotDePasse == clientDTO.CliMotDePasse);
-
-                if (client != null)
-                {
-                    Console.WriteLine($"utilisateur: " + clientDTO.CliCourriel);
-                }
+                Console.WriteLine($"utilisateur: " + clientDTO.CliCourriel);
             }
         }
-
     }
 }
