@@ -12,6 +12,7 @@ namespace Projet_Hotel_CodeBase.Controllers
 
     public class ReservationController : ControllerBase
     { 
+        private ReservationMetier serviceReservation=new ReservationMetier();
         private readonly ILogger<ReservationController> _logger;
         public ReservationController(ILogger<ReservationController> logger)
         {
@@ -19,31 +20,67 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpPost("modifierReservation")]
-        public void ModifierReservation(Guid PkResAmodifier, DateTime dateDebut, DateTime dateFin)
+        public IActionResult ModifierReservation(ReservationDTO reservationDTO)
         {
-            new ReservationMetier().ModifierReservation(PkResAmodifier, dateDebut,dateFin);
+           
+            try
+            {
+                ReservationDTO reservationModifier = serviceReservation.ModifierReservation(reservationDTO);
 
+
+                return reservationModifier == null ? NotFound() : Ok(reservationModifier);
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
 
 
         }
 
         [HttpPost("ajouterReservation")]
-        public void AddReservation(ReservationDTO reservationDTO)
+        public IActionResult AddReservation(ReservationDTO reservationDTO)
         {
-            new ReservationMetier().AddReservation(reservationDTO);
+            
+            try
+            {
+                ReservationDTO nouvelleReservation= serviceReservation.AddReservation(reservationDTO);
 
+                
+                return nouvelleReservation == null ? NotFound() : Ok(nouvelleReservation);
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
 
 
         }
         [HttpGet("afficherReservation")]
         public ReservationDTO[] GetReservations()
         {
-            return new ReservationMetier().GetReservations();
+            return serviceReservation.GetReservations();
         }
-        [HttpPost("CancelReservation")]
-        public void CancelReservation(Guid PkResACancel)
+
+
+        [HttpPost("annulerReservation")]
+        public IActionResult CancelReservation([FromBody] ReservationDTO reservationDTO)
         {
-            new ReservationMetier().CancelReservation(PkResACancel);
+            if (reservationDTO.PkResId == null || reservationDTO.PkResId.Equals(""))
+            {
+                return BadRequest("Veuillez entrer une réservation");
+            }
+
+            try
+            {
+                serviceReservation.CancelReservation(reservationDTO);
+                return Ok("La reservation à été annulé");
+            }
+            catch (Exception ex)
+            {
+
+                return BadRequest(ex.Message);
+            }
         }
 
     }

@@ -8,7 +8,7 @@ namespace Projet_Hotel_CodeBase.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-   
+    
 
 
         
@@ -16,6 +16,10 @@ namespace Projet_Hotel_CodeBase.Controllers
         
     public class ClientController : ControllerBase
     {
+        
+        private ClientMetier serviceClient = new ClientMetier();
+
+
         private readonly ILogger<ClientController> _logger;
         public ClientController(ILogger<ClientController> logger)
         {
@@ -26,10 +30,25 @@ namespace Projet_Hotel_CodeBase.Controllers
 
        
         [HttpPost("AddClient")]
-        public void AddClient([FromBody]ClientDTO clientDTO)
+        public IActionResult AddClient([FromBody]ClientDTO clientDTO)
         {
+            try
+            {
+                ClientDTO nouveauClient = serviceClient.AddClient(clientDTO);
+                return nouveauClient ==null ? NotFound() : Ok(nouveauClient);
+            }
+            catch (Exception ex) 
+            { 
+                return BadRequest(ex.Message);
+            }
+
             
-            new ClientMetier().AddClient(clientDTO);
+            
+            
+
+            
+            
+            
             
            
         }
@@ -37,7 +56,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         public ClientDTO[] GetClient([FromQuery] string CliNom, [FromQuery] string CliPrenom)
         {
 
-            return new ClientMetier().GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
+            return serviceClient.GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
 
 
         }
@@ -45,7 +64,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         public ClientDTO[] GetClients()
         {
 
-            return new ClientMetier().GetClients();
+            return serviceClient.GetClients();
 
 
         }
