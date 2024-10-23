@@ -6,19 +6,25 @@ namespace Projet_Hotel_CodeBase.Metier
 {
     public class ReservationMetier
     {
+        ValidationsMetier validationMetier = new ValidationsMetier();
         //Logan
         public void CancelReservation(ReservationDTO reservationDTO)
         {
-            using (var context = new MyDbContext())
+            
+            using (var db = new MyDbContext())
             {
-                
-                var reservation = context.Reservations.FirstOrDefault(r => r.PkResId == reservationDTO.PkResId);
+                if (!validationMetier.DoesReservationExist(reservationDTO,db))
+                {
+                    throw new Exception("La reservation spécifié n'existe pas.");
+                }
+
+                var reservation = db.Reservations.FirstOrDefault(r => r.PkResId == reservationDTO.PkResId);
 
                 if (reservation != null)
                 {
-                    context.Reservations.Remove(reservation);
+                    db.Reservations.Remove(reservation);
 
-                    context.SaveChanges();
+                    db.SaveChanges();
 
 
                 }
@@ -32,23 +38,35 @@ namespace Projet_Hotel_CodeBase.Metier
         //Logan
         public ReservationDTO ModifierReservation(ReservationDTO reservationDTO)
         {
-            if (!new ValidationsMetier().IsRoomAvailable(reservationDTO))
-            {
-                throw new Exception("Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
-            }
-
             
-            using (var context = new MyDbContext())
-            {
+            
 
-                var reservation = context.Reservations.FirstOrDefault(r => r.PkResId == reservationDTO.PkResId);
+            using (var db = new MyDbContext()) 
+            { 
+
+                if (!validationMetier.DoesReservationExist(reservationDTO,db))
+                {
+                    throw new Exception("La reservation spécifié n'existe pas.");
+                }
+
+                if (!validationMetier.DoesRoomExist(reservationDTO.FkChaId,db))
+                {
+                    throw new Exception("La chambre spécifié n'existe pas.");
+                }
+
+
+                if (!validationMetier.IsRoomAvailable(reservationDTO,db))
+                {
+                    throw new Exception("Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
+                }
+                var reservation = db.Reservations.FirstOrDefault(r => r.PkResId == reservationDTO.PkResId);
 
                 reservation.ResDateDebut = reservationDTO.ResDateDebut;
                 reservation.ResDateFin = reservationDTO.ResDateFin;
                 reservation.ResPrixJour = reservationDTO.ResPrixJour;
                 reservation.FkChaId = reservationDTO.FkChaId;
 
-                context.SaveChanges();
+                db.SaveChanges();
                 return new ReservationDTO
                 {
                     PkResId = reservation.PkResId,
@@ -66,17 +84,19 @@ namespace Projet_Hotel_CodeBase.Metier
         //Logan
         public ReservationDTO AddReservation(ReservationDTO reservationDTO)
         {
+            using (var db = new MyDbContext())
+            {
+                if (!validationMetier.DoesRoomExist(reservationDTO.FkChaId,db))
+                {
+                    throw new Exception("La chambre spécifié n'existe pas.");
+                }
 
-            if(!new ValidationsMetier().IsRoomAvailable(reservationDTO))
-            {
-                throw new Exception("Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
-            }
-            using (var context = new MyDbContext())
-            {
-                var chambre = context.Chambres
-             .FirstOrDefault(c => c.PkChaId == reservationDTO.FkChaId);
-                var client = context.Clients
-             .FirstOrDefault(c => c.PkCliId == reservationDTO.FkCliId);
+                if (!validationMetier.IsRoomAvailable(reservationDTO, db))
+                {
+                    throw new Exception("Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
+                }
+                var chambre = db.Chambres.FirstOrDefault(c => c.PkChaId == reservationDTO.FkChaId);
+                var client = db.Clients.FirstOrDefault(c => c.PkCliId == reservationDTO.FkCliId);
 
 
                 var nouvelleReservation = new Reservation
@@ -92,8 +112,8 @@ namespace Projet_Hotel_CodeBase.Metier
 
                 };
 
-                context.Reservations.Add(nouvelleReservation);
-                context.SaveChanges();
+                db.Reservations.Add(nouvelleReservation);
+                db.SaveChanges();
                 return new ReservationDTO
                 {
                     PkResId = nouvelleReservation.PkResId,

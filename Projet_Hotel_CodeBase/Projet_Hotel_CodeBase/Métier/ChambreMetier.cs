@@ -16,7 +16,7 @@ namespace Projet_Hotel_CodeBase.Métier
                     ChaNumero = c.ChaNumero,
                     ChaEtat = c.ChaEtat,
                     ChaAutreInfo = c.ChaAutreInfo,
-                    FKTypId = c.FkTypId
+                    FkTypId = c.FkTypId
                 }).ToArray();
             }
         }
@@ -33,7 +33,7 @@ namespace Projet_Hotel_CodeBase.Métier
                         ChaNumero = c.ChaNumero,
                         ChaEtat = c.ChaEtat,
                         ChaAutreInfo = c.ChaAutreInfo,
-                        FKTypId = c.FkTypId,
+                        FkTypId = c.FkTypId,
                     }).ToArray();
                 return chambreDTO;
             }
@@ -45,7 +45,7 @@ namespace Projet_Hotel_CodeBase.Métier
                 //var typeChambre = new TypeChambre();
                 //db.TypeChambres.Where(e => e.TypNomType.Equals(chambreDTO.TypeChambre));
                 var typeChambre = db.TypeChambres
-             .FirstOrDefault(tc => tc.PkTypId == chambreDTO.FKTypId);
+             .FirstOrDefault(tc => tc.PkTypId == chambreDTO.FkTypId);
 
                 var nouvelleChambre = new Chambre
                 {
@@ -62,6 +62,39 @@ namespace Projet_Hotel_CodeBase.Métier
                 
                 
             }
+        }
+
+        public ChambreDTO ModifierChambre(ChambreDTO chambreDTO)
+        {
+
+            using (var db = new MyDbContext())
+            {
+                if (!new ValidationsMetier().DoesRoomExist(chambreDTO.PkChaId,db))
+                {
+                    throw new Exception("La chambre spécifié n'existe pas.");
+                }
+
+                var chambre = db.Chambres.FirstOrDefault(c => c.PkChaId == chambreDTO.PkChaId);
+
+                chambre.ChaNumero= chambreDTO.ChaNumero;
+                chambre.ChaAutreInfo = chambreDTO.ChaAutreInfo;
+                chambre.ChaEtat = chambreDTO.ChaEtat;
+                chambre.FkTypId = chambreDTO.FkTypId;
+                
+
+                db.SaveChanges();
+                return new ChambreDTO
+                {
+                    PkChaId = chambre.PkChaId,
+                    ChaNumero= chambre.ChaNumero,
+                    ChaAutreInfo= chambre.ChaAutreInfo,
+                    ChaEtat= chambre.ChaEtat,
+                    FkTypId= chambre.FkTypId
+
+                };
+
+            }
+
         }
     }
 }

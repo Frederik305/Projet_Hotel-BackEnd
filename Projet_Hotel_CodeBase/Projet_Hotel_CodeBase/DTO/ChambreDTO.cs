@@ -6,6 +6,6 @@
         public short ChaNumero { get; set; } // CHA_numero
         public bool ChaEtat { get; set; } // CHA_etat
         public string? ChaAutreInfo { get; set; }
-        public Guid FKTypId { get; set; }
+        public Guid FkTypId { get; set; }
     }
 }

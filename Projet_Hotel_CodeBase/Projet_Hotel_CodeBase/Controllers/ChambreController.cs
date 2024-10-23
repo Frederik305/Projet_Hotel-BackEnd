@@ -11,8 +11,9 @@ namespace Projet_Hotel_CodeBase.Controllers
 {
     [ApiController]
     [Route("[controller]")]
-    public class ChambreController : ControllerBase
-    {
+    public class ChambreController : ControllerBase   
+    { 
+        private ChambreMetier serviceChambre = new ChambreMetier();
         private readonly ILogger<ChambreController> _logger;
 
         public ChambreController(ILogger<ChambreController> logger)
@@ -37,5 +38,25 @@ namespace Projet_Hotel_CodeBase.Controllers
         {
             new ChambreMetier().AddChambre(chambreDTO);
         }
+
+        [HttpPost("modifierChambre")]
+        public IActionResult ModifierChambre(ChambreDTO chambreDTO)
+        {
+
+            try
+            {
+                ChambreDTO chambreModifier = serviceChambre.ModifierChambre(chambreDTO);
+
+
+                return chambreModifier == null ? NotFound() : Ok(chambreModifier);
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
+
+
+        }
     }
+    
 }
