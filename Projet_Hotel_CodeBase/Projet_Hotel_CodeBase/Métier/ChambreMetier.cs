@@ -66,8 +66,7 @@ namespace Projet_Hotel_CodeBase.Métier
                     FkTypId = nouvelleChambre.FkTypId,
                     ChaEtat = nouvelleChambre.ChaEtat,
                     ChaNumero = nouvelleChambre.ChaNumero
-
-                
+                };
             }
         }
 
