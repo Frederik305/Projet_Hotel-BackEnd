@@ -65,24 +65,7 @@ namespace Projet_Hotel_CodeBase.Métier
             }return true;
         }
 
-        public bool IsRoomAvailableModify(ReservationDTO reservationDTO)
-        {
-
-            using (var db = new MyDbContext())
-            {
-                var reservationsChambre = db.Reservations.Where(r => r.Chambre.PkChaId == reservationDTO.FkChaId).ToList();
-                foreach (var reservation in reservationsChambre)
-                {
-                    // Si la nouvelle réservation chevauche une réservation existante, la chambre n'est pas disponible
-                    if (reservation.ResDateDebut < reservationDTO.ResDateFin && reservation.ResDateFin > reservationDTO.ResDateDebut)
-                    {
-                        return false; // Chambre non disponible
-                    }
-
-                }
-
-            }
-            return true;
-        }
+     
+        
     }
 }
