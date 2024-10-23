@@ -9,10 +9,12 @@ namespace Projet_Hotel_CodeBase.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
    
     public class ClientController : ControllerBase
     {
         private ClientMetier clientMetier = new ClientMetier();
+
 
         private readonly ILogger<ClientController> _logger;
         public ClientController(ILogger<ClientController> logger)
@@ -30,6 +32,7 @@ namespace Projet_Hotel_CodeBase.Controllers
                 return BadRequest(e.Message);
             }
         }
+        
         [HttpPost("Modifierlient")]
         public IActionResult ModifierClient([FromBody] ClientDTO clientDTO) 
         {
@@ -42,19 +45,21 @@ namespace Projet_Hotel_CodeBase.Controllers
             {
                 return BadRequest(e.Message);
             }
+
         }
+        
         [HttpGet("GetClient")]
         public ClientDTO[] GetClient([FromQuery] string CliNom, [FromQuery] string CliPrenom)
         {
 
-            return new ClientMetier().GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
+            return serviceClient.GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
 
         }
         [HttpGet("GetClients")]
         public ClientDTO[] GetClients()
         {
 
-            return new ClientMetier().GetClients();
+            return serviceClient.GetClients();
 
 
         }

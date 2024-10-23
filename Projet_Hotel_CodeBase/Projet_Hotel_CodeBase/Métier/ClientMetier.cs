@@ -9,6 +9,7 @@ namespace Projet_Hotel_CodeBase.Metier
         public ClientDTO AddClient(ClientDTO clientDTO)
         {
             using (var db = new MyDbContext())
+
             {
                 if (validationsMetier.EmailExists(clientDTO, db))
                 {
@@ -80,8 +81,10 @@ namespace Projet_Hotel_CodeBase.Metier
                     CliMotDePasse = clientDTO.CliMotDePasse,
                     CliTelephoneMobile = clientDTO.CliTelephoneMobile
                 };
+
             }
         }
+        //Logan
         public ClientDTO[] GetClients()
         {
             using (var db = new MyDbContext())
@@ -97,7 +100,6 @@ namespace Projet_Hotel_CodeBase.Metier
                         CliTelephoneMobile = c.CliTelephoneMobile,
                         PkCliId = c.PkCliId
                     }).ToArray(); 
-
             }
         }
         public ClientDTO[] GetClient(ClientDTO clientDTO)
@@ -112,17 +114,46 @@ namespace Projet_Hotel_CodeBase.Metier
                                  CliNom = c.CliNom,
                                  CliPrenom = c.CliPrenom,
                                  CliAddresseResidence = c.CliAddresseResidence,
-                                 CliCourriel= c.CliCourriel,
-                                 CliMotDePasse= c.CliMotDePasse,
-                                 CliTelephoneMobile= c.CliTelephoneMobile,
-                                 PkCliId= c.PkCliId
+                                 CliCourriel = c.CliCourriel,
+                                 CliMotDePasse = c.CliMotDePasse,
+                                 CliTelephoneMobile = c.CliTelephoneMobile,
+                                 PkCliId = c.PkCliId
                              })
                              .ToArray();
-                
+
                 return clients;
 
             }
         }
+        /// <summary>
+        /// Récupère un client par son identifiant.
+        /// </summary>
+        /// <param name="clientId">L'identifiant unique du client à récupérer.</param>
+        /// <returns>
+        /// Un objet <see cref="ClientDTO"/> représentant le client correspondant, ou <c>null</c> si aucun client n'est trouvé.
+        /// </returns>
+        public ClientDTO GetClientById(ClientDTO clientDTO)
+        {
+            using (var context = new MyDbContext())
+            {
+                var client = context.Clients
+                    .Where(c => c.PkCliId == clientDTO.PkCliId)
+                    .Select(c => new ClientDTO
+                    {
+                        CliNom = c.CliNom,
+                        CliPrenom = c.CliPrenom,
+                        CliAddresseResidence = c.CliAddresseResidence,
+                        CliCourriel = c.CliCourriel,
+                        CliMotDePasse = c.CliMotDePasse,
+                        CliTelephoneMobile = c.CliTelephoneMobile,
+                        PkCliId = c.PkCliId
+                    })
+                    .FirstOrDefault(); // Retourne le premier client trouvé ou null
+
+                return client; // Retourne le client ou null si non trouvé
+            }
+        }
+
         public void loggin(ClientDTO clientDTO)
         {
             using (var db = new MyDbContext())

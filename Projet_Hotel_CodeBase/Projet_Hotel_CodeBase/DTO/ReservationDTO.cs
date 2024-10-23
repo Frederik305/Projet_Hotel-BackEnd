@@ -20,14 +20,12 @@ namespace Projet_Hotel_CodeBase.DTO
         [Column(TypeName = "varchar(300)")]
         public string ResAutre { get; set; }
 
-
-        [JsonIgnore]
         [Column(TypeName = "uniqueidentifier")]
         public Guid FkCliId { get; set; }
-
-        [JsonIgnore]
+      
         [Column(TypeName = "uniqueidentifier")]
         public Guid FkChaId { get; set; }
+
 
     }
 
