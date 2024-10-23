@@ -52,14 +52,14 @@ namespace Projet_Hotel_CodeBase.Controllers
         public ClientDTO[] GetClient([FromQuery] string CliNom, [FromQuery] string CliPrenom)
         {
 
-            return serviceClient.GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
+            return clientMetier.GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
 
         }
         [HttpGet("GetClients")]
         public ClientDTO[] GetClients()
         {
 
-            return serviceClient.GetClients();
+            return clientMetier.GetClients();
 
 
         }

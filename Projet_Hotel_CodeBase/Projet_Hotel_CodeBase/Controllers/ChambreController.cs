@@ -15,7 +15,7 @@ namespace Projet_Hotel_CodeBase.Controllers
 
     public class ChambreController : ControllerBase   
     { 
-        private ChambreMetier serviceChambre = new ChambreMetier();
+        private ChambreMetier chambreMetier = new ChambreMetier();
 
         private readonly ILogger<ChambreController> _logger;
 
@@ -56,7 +56,7 @@ namespace Projet_Hotel_CodeBase.Controllers
 
             try
             {
-                ChambreDTO chambreModifier = serviceChambre.ModifierChambre(chambreDTO);
+                ChambreDTO chambreModifier = chambreMetier.ModifierChambre(chambreDTO);
 
 
                 return chambreModifier == null ? NotFound() : Ok(chambreModifier);
