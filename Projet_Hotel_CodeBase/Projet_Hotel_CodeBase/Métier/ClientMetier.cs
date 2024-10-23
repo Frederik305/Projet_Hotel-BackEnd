@@ -5,22 +5,20 @@ namespace Projet_Hotel_CodeBase.Metier
 {
     public class ClientMetier
     {
-        //Logan
+        ValidationsMetier validationsMetier = new ValidationsMetier();
         public ClientDTO AddClient(ClientDTO clientDTO)
-
-
         {
-            if (new ValidationsMetier().EmailExists(clientDTO))
+            using (var db = new MyDbContext())
+
             {
-                throw new Exception("Courriel déja utiliser");
-            }
-
-
-            using (var context = new MyDbContext())
-            {
-
-
-
+                if (validationsMetier.EmailExists(clientDTO, db))
+                {
+                    throw new Exception("Courriel déjà utiliser");
+                }
+                if (validationsMetier.TelephoneExists(clientDTO, db))
+                {
+                    throw new Exception("Telephone déjà utiliser");
+                }
                 var nouveauClient = new Client
                 {
                     PkCliId = Guid.NewGuid(),
@@ -30,15 +28,12 @@ namespace Projet_Hotel_CodeBase.Metier
                     CliCourriel = clientDTO.CliCourriel,
                     CliMotDePasse = clientDTO.CliMotDePasse,
                     CliTelephoneMobile = clientDTO.CliTelephoneMobile
-
-
                 };
 
-                context.Clients.Add(nouveauClient);
+                db.Clients.Add(nouveauClient);
+                db.SaveChanges();
 
-                
-                context.SaveChanges();
-                return new ClientDTO
+                return new ClientDTO()
                 {
                     PkCliId = nouveauClient.PkCliId,
                     CliNom = nouveauClient.CliNom,
@@ -48,34 +43,71 @@ namespace Projet_Hotel_CodeBase.Metier
                     CliMotDePasse = nouveauClient.CliMotDePasse,
                     CliTelephoneMobile = nouveauClient.CliTelephoneMobile
                 };
-                  
+            }
+        }
+
+        public ClientDTO ModifierClient(ClientDTO clientDTO)
+        {
+            var cli = new ClientDTO { PkCliId = clientDTO.PkCliId };
+            using (var db = new MyDbContext())
+            {
+                if (!validationsMetier.IsCurrentClientEmail(clientDTO, db))
+                {
+                    throw new Exception("Courriel déjà utiliser");
+                }
+                if (!validationsMetier.IsCurrentClientPhone(clientDTO, db))
+                {
+                    throw new Exception("Telephone déjà utiliser");
+                }
+
+                var client = db.Clients.FirstOrDefault(c => c.PkCliId == cli.PkCliId);
+
+                client.CliPrenom = clientDTO.CliPrenom;
+                client.CliNom = clientDTO.CliNom;
+                client.CliAddresseResidence = clientDTO.CliAddresseResidence;
+                client.CliTelephoneMobile = clientDTO.CliTelephoneMobile;
+                client.CliCourriel = clientDTO.CliCourriel;
+                client.CliMotDePasse = clientDTO.CliMotDePasse;
+
+                db.SaveChanges();
+
+                return new ClientDTO()
+                {
+                    PkCliId = clientDTO.PkCliId,
+                    CliNom = clientDTO.CliNom,
+                    CliPrenom = clientDTO.CliPrenom,
+                    CliAddresseResidence = clientDTO.CliAddresseResidence,
+                    CliCourriel = clientDTO.CliCourriel,
+                    CliMotDePasse = clientDTO.CliMotDePasse,
+                    CliTelephoneMobile = clientDTO.CliTelephoneMobile
+                };
+
             }
         }
         //Logan
         public ClientDTO[] GetClients()
         {
-            using (var context = new MyDbContext())
+            using (var db = new MyDbContext())
             {
 
-                return context.Clients.Select(c => new ClientDTO
-                {
-                    CliNom = c.CliNom,
-                    CliPrenom = c.CliPrenom,
-                    CliAddresseResidence = c.CliAddresseResidence,
-                    CliCourriel = c.CliCourriel,
-                    CliMotDePasse = c.CliMotDePasse,
-                    CliTelephoneMobile = c.CliTelephoneMobile,
-                    PkCliId = c.PkCliId
-                }).ToArray();
-
+                return db.Clients.Select(c => new ClientDTO
+                    {
+                        CliNom = c.CliNom,
+                        CliPrenom = c.CliPrenom,
+                        CliAddresseResidence = c.CliAddresseResidence,
+                        CliCourriel = c.CliCourriel,
+                        CliMotDePasse = c.CliMotDePasse,
+                        CliTelephoneMobile = c.CliTelephoneMobile,
+                        PkCliId = c.PkCliId
+                    }).ToArray(); 
             }
         }
         public ClientDTO[] GetClient(ClientDTO clientDTO)
         {
-            using (var context = new MyDbContext())
+            using (var db = new MyDbContext())
             {
 
-                var clients = context.Clients
+                var clients = db.Clients
                              .Where(c => c.CliNom == clientDTO.CliNom || c.CliPrenom == clientDTO.CliPrenom)
                              .Select(c => new ClientDTO
                              {
@@ -126,15 +158,11 @@ namespace Projet_Hotel_CodeBase.Metier
         {
             using (var db = new MyDbContext())
             {
-                var client = db.Clients
-             .FirstOrDefault(c => c.CliCourriel == clientDTO.CliCourriel && c.CliMotDePasse == clientDTO.CliMotDePasse);
-
-                if (client != null)
+                if (validationsMetier.EmailExists(clientDTO, db) && validationsMetier.PasswordExists(clientDTO, db))
                 {
                     Console.WriteLine($"utilisateur: " + clientDTO.CliCourriel);
                 }
             }
         }
-
     }
 }

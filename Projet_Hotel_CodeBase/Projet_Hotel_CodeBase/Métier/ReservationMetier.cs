@@ -1,4 +1,4 @@
-﻿
+
 using Projet_Hotel_CodeBase.DTO;
 using Projet_Hotel_CodeBase.Métier;
 
@@ -81,6 +81,7 @@ namespace Projet_Hotel_CodeBase.Metier
             }
 
         }
+
         //Logan
         public ReservationDTO AddReservation(ReservationDTO reservationDTO)
         {
@@ -97,8 +98,6 @@ namespace Projet_Hotel_CodeBase.Metier
                 }
                 var chambre = db.Chambres.FirstOrDefault(c => c.PkChaId == reservationDTO.FkChaId);
                 var client = db.Clients.FirstOrDefault(c => c.PkCliId == reservationDTO.FkCliId);
-
-
                 var nouvelleReservation = new Reservation
                 {
                     PkResId = Guid.NewGuid(),
@@ -108,12 +107,11 @@ namespace Projet_Hotel_CodeBase.Metier
                     ResPrixJour = reservationDTO.ResPrixJour,
                     Chambre = chambre,
                     Client = client
-
-
                 };
 
                 db.Reservations.Add(nouvelleReservation);
                 db.SaveChanges();
+              
                 return new ReservationDTO
                 {
                     PkResId = nouvelleReservation.PkResId,
@@ -129,7 +127,7 @@ namespace Projet_Hotel_CodeBase.Metier
         //Logan
         public ReservationDTO[] GetReservations()
         {
-            using(var context = new MyDbContext())
+            using (var context = new MyDbContext())
             {
                 return context.Reservations.Select(r => new ReservationDTO
                 {
@@ -140,6 +138,7 @@ namespace Projet_Hotel_CodeBase.Metier
                     ResPrixJour = r.ResPrixJour,
                     FkChaId= r.Chambre.PkChaId,
                     FkCliId= r.Client.PkCliId
+
                 }).ToArray();
             }
         }

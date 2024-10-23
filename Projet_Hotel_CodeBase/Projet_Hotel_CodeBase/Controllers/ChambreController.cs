@@ -4,16 +4,19 @@ using Microsoft.EntityFrameworkCore.ChangeTracking;
 using Microsoft.EntityFrameworkCore.Metadata.Internal;
 using Microsoft.EntityFrameworkCore.Storage;
 using Projet_Hotel_CodeBase.DTO;
-using Projet_Hotel_CodeBase.Métier;
+using Projet_Hotel_CodeBase.MÃ©tier;
+using Projet_Hotel_CodeBase.Metier;
 using System.Linq;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
     [ApiController]
     [Route("[controller]")]
+
     public class ChambreController : ControllerBase   
     { 
         private ChambreMetier serviceChambre = new ChambreMetier();
+
         private readonly ILogger<ChambreController> _logger;
 
         public ChambreController(ILogger<ChambreController> logger)
@@ -34,9 +37,17 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpPost("/CreeChambre", Name = "CreeChambre")]
-        public void Post(ChambreDTO chambreDTO)
+        public IActionResult Post([FromBody] ChambreDTO chambreDTO)
         {
-            new ChambreMetier().AddChambre(chambreDTO);
+            try
+            {
+                ChambreDTO newChambre = chambreMetier.AddChambre(chambreDTO);
+                return newChambre == null ? NotFound() : Ok(newChambre);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost("modifierChambre")]

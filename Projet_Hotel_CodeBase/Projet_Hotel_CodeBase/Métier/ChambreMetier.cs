@@ -33,12 +33,12 @@ namespace Projet_Hotel_CodeBase.Métier
                         ChaNumero = c.ChaNumero,
                         ChaEtat = c.ChaEtat,
                         ChaAutreInfo = c.ChaAutreInfo,
-                        FkTypId = c.FkTypId,
+                        FkTypId = c.FkTypId
                     }).ToArray();
                 return chambreDTO;
             }
         }
-        public void AddChambre(ChambreDTO chambreDTO)
+        public ChambreDTO AddChambre(ChambreDTO chambreDTO)
         {
             using (var db = new MyDbContext())
             {
@@ -59,7 +59,14 @@ namespace Projet_Hotel_CodeBase.Métier
 
                 db.Chambres.Add(nouvelleChambre);
                 db.SaveChanges();
-                
+                return new ChambreDTO()
+                {
+                    PkChaId = nouvelleChambre.PkChaId,
+                    ChaAutreInfo = nouvelleChambre.ChaAutreInfo,
+                    FkTypId = nouvelleChambre.FkTypId,
+                    ChaEtat = nouvelleChambre.ChaEtat,
+                    ChaNumero = nouvelleChambre.ChaNumero
+
                 
             }
         }
@@ -76,6 +83,7 @@ namespace Projet_Hotel_CodeBase.Métier
 
                 var chambre = db.Chambres.FirstOrDefault(c => c.PkChaId == chambreDTO.PkChaId);
 
+
                 chambre.ChaNumero= chambreDTO.ChaNumero;
                 chambre.ChaAutreInfo = chambreDTO.ChaAutreInfo;
                 chambre.ChaEtat = chambreDTO.ChaEtat;
@@ -89,8 +97,7 @@ namespace Projet_Hotel_CodeBase.Métier
                     ChaNumero= chambre.ChaNumero,
                     ChaAutreInfo= chambre.ChaAutreInfo,
                     ChaEtat= chambre.ChaEtat,
-                    FkTypId= chambre.FkTypId
-
+                    FkTypId= chambre.FkTypId                
                 };
 
             }
