@@ -1,5 +1,6 @@
 ﻿using Azure.Identity;
 using Projet_Hotel_CodeBase.DTO;
+using Projet_Hotel_CodeBase.Métier;
 
 namespace Projet_Hotel_CodeBase.Metier
 {
@@ -38,14 +39,19 @@ namespace Projet_Hotel_CodeBase.Metier
             }
 
         }
-        public void AddReservation(ReservationDTO reservationDTO)
+        public ReservationDTO AddReservation(ReservationDTO reservationDTO)
         {
+
+            if (!new ValidationsMetier().IsRoomAvailable(reservationDTO))
+            {
+                throw new Exception("Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
+            }
             using (var context = new MyDbContext())
             {
                 var chambre = context.Chambres
-             .FirstOrDefault(c => c.ChaNumero == reservationDTO.ResChambre);
+             .FirstOrDefault(c => c.PkChaId == reservationDTO.FkChaId);
                 var client = context.Clients
-             .FirstOrDefault(c => c.CliCourriel == reservationDTO.ResCliCourriel);
+             .FirstOrDefault(c => c.PkCliId == reservationDTO.FkCliId);
 
 
                 var nouvelleReservation = new Reservation
@@ -63,11 +69,21 @@ namespace Projet_Hotel_CodeBase.Metier
 
                 context.Reservations.Add(nouvelleReservation);
                 context.SaveChanges();
+                return new ReservationDTO
+                {
+                    PkResId = nouvelleReservation.PkResId,
+                    ResAutre = nouvelleReservation.ResAutre,
+                    ResDateDebut = nouvelleReservation.ResDateDebut,
+                    ResDateFin = nouvelleReservation.ResDateFin,
+                    ResPrixJour = nouvelleReservation.ResPrixJour,
+                    FkChaId = nouvelleReservation.FkChaId,
+                    FkCliId = nouvelleReservation.FkCliId
+                };
             }
         }
         public ReservationDTO[] GetReservations()
         {
-            using(var context = new MyDbContext())
+            using (var context = new MyDbContext())
             {
                 return context.Reservations.Select(r => new ReservationDTO
                 {
@@ -76,8 +92,8 @@ namespace Projet_Hotel_CodeBase.Metier
                     ResDateDebut = r.ResDateDebut,
                     ResDateFin = r.ResDateFin,
                     ResPrixJour = r.ResPrixJour,
-                     ResChambre= r.Chambre.ChaNumero,
-                     ResCliCourriel= r.Client.CliCourriel
+                    FkChaId = r.Chambre.PkChaId,
+                    FkCliId = r.Client.PkCliId
                 }).ToArray();
             }
         }

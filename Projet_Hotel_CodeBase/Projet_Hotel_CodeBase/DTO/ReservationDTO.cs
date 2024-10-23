@@ -1,30 +1,33 @@
-﻿using System.Text.Json.Serialization;
+﻿using System.ComponentModel.DataAnnotations.Schema;
+using System.Text.Json.Serialization;
 
 namespace Projet_Hotel_CodeBase.DTO
 {
     public class ReservationDTO
     {
+        [Column(TypeName = "uniqueidentifier")]
         public Guid PkResId { get; set; }
+
+        [Column(TypeName = "datetime")]
         public DateTime ResDateDebut { get; set; }
+
+        [Column(TypeName = "datetime")]
         public DateTime ResDateFin { get; set; }
+
+        [Column(TypeName = "money")]
         public decimal ResPrixJour { get; set; }
+
+        [Column(TypeName = "varchar(300)")]
         public string ResAutre { get; set; }
 
+
         [JsonIgnore]
+        [Column(TypeName = "uniqueidentifier")]
         public Guid FkCliId { get; set; }
+
         [JsonIgnore]
+        [Column(TypeName = "uniqueidentifier")]
         public Guid FkChaId { get; set; }
-        public short ResChambre { get; set; }
-        public  string ResCliCourriel { get; set; }
-
-        [JsonIgnore]
-        Client client { get; set; }
-        [JsonIgnore]
-        public string ClientName { get; set; }
-
-        [JsonIgnore]
-        Chambre chambre { get; set; }
-        public string numChambre { get; set; }
 
     }
 
