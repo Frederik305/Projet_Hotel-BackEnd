@@ -30,6 +30,19 @@ namespace Projet_Hotel_CodeBase.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [HttpPost("Modifierlient")]
+        public IActionResult ModifierClient([FromBody] ClientDTO clientDTO) 
+        {
+            try
+            {
+                ClientDTO nouveauClient = clientMetier.ModifierClient(clientDTO);
+                return nouveauClient == null ? NotFound() : Ok(nouveauClient);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
         [HttpGet("GetClient")]
         public ClientDTO[] GetClient([FromQuery] string CliNom, [FromQuery] string CliPrenom)
         {

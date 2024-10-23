@@ -1,4 +1,6 @@
-﻿namespace Projet_Hotel_CodeBase.DTO
+﻿using System.ComponentModel.DataAnnotations;
+
+namespace Projet_Hotel_CodeBase.DTO
 {
     public class ChambreDTO
     {

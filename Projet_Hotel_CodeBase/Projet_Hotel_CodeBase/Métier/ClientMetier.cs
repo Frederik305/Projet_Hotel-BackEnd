@@ -7,9 +7,14 @@ namespace Projet_Hotel_CodeBase.Metier
     {
         public ClientDTO AddClient(ClientDTO clientDTO)
         {
-            if (new ValidationsMetier().EmailExists(clientDTO))
+            ValidationsMetier validationsMetier = new ValidationsMetier();
+            if (validationsMetier.EmailExists(clientDTO))
             {
-                throw new Exception("Courriel déja utiliser");
+                throw new Exception("Courriel déjà utiliser");
+            }
+            if (validationsMetier.TelephoneExists(clientDTO))
+            {
+                throw new Exception("Telephone déjà utiliser");
             }
             using (var context = new MyDbContext())
             {
@@ -30,6 +35,44 @@ namespace Projet_Hotel_CodeBase.Metier
                 return new ClientDTO()
                 {
                     PkCliId = nouveauClient.PkCliId,
+                    CliNom = clientDTO.CliNom,
+                    CliPrenom = clientDTO.CliPrenom,
+                    CliAddresseResidence = clientDTO.CliAddresseResidence,
+                    CliCourriel = clientDTO.CliCourriel,
+                    CliMotDePasse = clientDTO.CliMotDePasse,
+                    CliTelephoneMobile = clientDTO.CliTelephoneMobile
+                };
+            }
+        }
+
+        public ClientDTO ModifierClient(ClientDTO clientDTO)
+        {
+            ValidationsMetier validationsMetier = new ValidationsMetier();
+            if (!validationsMetier.IsCurrentClientEmail(clientDTO))
+            {
+                throw new Exception("Courriel déjà utiliser");
+            }
+            if (!validationsMetier.IsCurrentClientPhone(clientDTO))
+            {
+                throw new Exception("Telephone déjà utiliser");
+            }
+            var cli = new ClientDTO { PkCliId = clientDTO.PkCliId };
+            using (var context = new MyDbContext())
+            {
+                var client = context.Clients.FirstOrDefault(c => c.PkCliId == cli.PkCliId);
+
+                client.CliPrenom = clientDTO.CliPrenom;
+                client.CliNom = clientDTO.CliNom;
+                client.CliAddresseResidence = clientDTO.CliAddresseResidence;
+                client.CliTelephoneMobile = clientDTO.CliTelephoneMobile;
+                client.CliCourriel = clientDTO.CliCourriel;
+                client.CliMotDePasse = clientDTO.CliMotDePasse;
+
+                context.SaveChanges();
+
+                return new ClientDTO()
+                {
+                    PkCliId = clientDTO.PkCliId,
                     CliNom = clientDTO.CliNom,
                     CliPrenom = clientDTO.CliPrenom,
                     CliAddresseResidence = clientDTO.CliAddresseResidence,

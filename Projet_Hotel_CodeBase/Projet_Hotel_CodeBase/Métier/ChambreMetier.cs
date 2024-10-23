@@ -59,8 +59,6 @@ namespace Projet_Hotel_CodeBase.Métier
 
                 db.Chambres.Add(nouvelleChambre);
                 db.SaveChanges();
-
-                
             }
         }
     }
