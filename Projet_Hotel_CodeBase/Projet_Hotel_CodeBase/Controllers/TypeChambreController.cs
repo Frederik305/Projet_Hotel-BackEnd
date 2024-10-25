@@ -22,8 +22,8 @@ namespace Projet_Hotel_CodeBase.Controllers
         {
             try
             {
-                TypeChambreDTO[] newTypeChambre = typeChambreMetier.GetTypeChambres();
-                return newTypeChambre == null ? NotFound() : Ok(newTypeChambre);
+                TypeChambreDTO[] typeChambre = typeChambreMetier.GetTypeChambres();
+                return typeChambre.Length == 0 ? NotFound() : Ok(typeChambre);
             }
             catch (Exception e)
             {

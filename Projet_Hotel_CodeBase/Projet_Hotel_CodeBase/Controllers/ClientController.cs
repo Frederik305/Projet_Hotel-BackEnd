@@ -54,7 +54,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             try
             {
                 ClientDTO[] client = clientMetier.GetClientByName(clientDTO);
-                return client == null ? NotFound() : Ok(client);
+                return client.Length == 0 ? NotFound() : Ok(client);
             }
             catch (Exception e)
             {
@@ -67,7 +67,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             try
             {
                 ClientDTO[] client = clientMetier.GetClients();
-                return client == null ? NotFound() : Ok(client);
+                return client.Length == 0 ? NotFound() : Ok(client);
             }
             catch (Exception e)
             {

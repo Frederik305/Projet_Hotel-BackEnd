@@ -29,8 +29,8 @@ namespace Projet_Hotel_CodeBase.Controllers
         {
             try
             {
-                ChambreDTO[] newChambre = chambreMetier.RequestChambres();
-                return newChambre == null ? NotFound() : Ok(newChambre);
+                ChambreDTO[] chambre = chambreMetier.RequestChambres();
+                return chambre.Length == 0 ? NotFound() : Ok(chambre);
             }
             catch (Exception e)
             {
@@ -43,8 +43,8 @@ namespace Projet_Hotel_CodeBase.Controllers
         {
             try
             {
-                ChambreDTO[] newChambre = chambreMetier.RequestChambreByNum(chambreDTO);
-                return newChambre == null ? NotFound() : Ok(newChambre);
+                ChambreDTO[] chambre = chambreMetier.RequestChambreByNum(chambreDTO);
+                return chambre.Length == 0 ? NotFound() : Ok(chambre);
             }
             catch (Exception e)
             {
