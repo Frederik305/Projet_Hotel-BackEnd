@@ -68,6 +68,21 @@ namespace Projet_Hotel_CodeBase.Controllers
 
 
         }
+        [HttpGet("/GetAvailableChambre/")]
+        public IActionResult GetAvailableRoom([FromQuery] ReservationDTO reservationDTO)
+        {
+            try
+            {
+                ChambreDTO[] roomsAvailable = chambreMetier.RequestRoomsAvailable(reservationDTO);
+
+
+                return roomsAvailable == null ? NotFound() : Ok(roomsAvailable);
+            }
+            catch (Exception ex)
+            {
+                return Conflict(ex.Message);
+            }
+        }
     }
     
 }

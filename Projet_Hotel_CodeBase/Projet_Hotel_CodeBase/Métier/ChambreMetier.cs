@@ -75,7 +75,7 @@ namespace Projet_Hotel_CodeBase.Métier
 
             using (var db = new MyDbContext())
             {
-                if (!new ValidationsMetier().DoesRoomExist(chambreDTO.PkChaId,db))
+                if (!new ValidationsMetier().DoesRoomExist(chambreDTO.PkChaId, db))
                 {
                     throw new Exception("La chambre spécifié n'existe pas.");
                 }
@@ -83,24 +83,45 @@ namespace Projet_Hotel_CodeBase.Métier
                 var chambre = db.Chambres.FirstOrDefault(c => c.PkChaId == chambreDTO.PkChaId);
 
 
-                chambre.ChaNumero= chambreDTO.ChaNumero;
+                chambre.ChaNumero = chambreDTO.ChaNumero;
                 chambre.ChaAutreInfo = chambreDTO.ChaAutreInfo;
                 chambre.ChaEtat = chambreDTO.ChaEtat;
                 chambre.FkTypId = chambreDTO.FkTypId;
-                
+
 
                 db.SaveChanges();
                 return new ChambreDTO
                 {
                     PkChaId = chambre.PkChaId,
-                    ChaNumero= chambre.ChaNumero,
-                    ChaAutreInfo= chambre.ChaAutreInfo,
-                    ChaEtat= chambre.ChaEtat,
-                    FkTypId= chambre.FkTypId                
+                    ChaNumero = chambre.ChaNumero,
+                    ChaAutreInfo = chambre.ChaAutreInfo,
+                    ChaEtat = chambre.ChaEtat,
+                    FkTypId = chambre.FkTypId
                 };
 
             }
 
+        }
+        public ChambreDTO[] RequestRoomsAvailable(ReservationDTO reservationDTO)
+        {
+            using (var db = new MyDbContext())
+            {
+
+                return db.Chambres.Where(c => !c.Reservations.Any(r =>
+                    r.ResDateFin >= reservationDTO.ResDateDebut && r.ResDateDebut <= reservationDTO.ResDateFin))
+                .Select(c => new ChambreDTO
+                {
+                    PkChaId = c.PkChaId,
+                    ChaNumero = c.ChaNumero,
+                    ChaEtat = c.ChaEtat,
+                    ChaAutreInfo = c.ChaAutreInfo,
+                    FkTypId = c.FkTypId
+                }).ToArray(); ;
+
+
+            }
+
+           
         }
     }
 }
