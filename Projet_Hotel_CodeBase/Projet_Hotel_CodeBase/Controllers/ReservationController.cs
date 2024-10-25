@@ -62,7 +62,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             try
             {
                 ReservationDTO[] reservations = serviceReservation.GetReservations();
-                return reservations == null ? NotFound() : Ok(reservations);
+                return reservations.Length == 0 ? NotFound() : Ok(reservations);
             }
             catch (Exception e)
             {
