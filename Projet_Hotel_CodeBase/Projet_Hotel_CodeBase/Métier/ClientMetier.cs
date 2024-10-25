@@ -90,7 +90,7 @@ namespace Projet_Hotel_CodeBase.Metier
             using (var db = new MyDbContext())
             {
 
-                return db.Clients.Select(c => new ClientDTO
+                var clients = db.Clients.Select(c => new ClientDTO
                     {
                         CliNom = c.CliNom,
                         CliPrenom = c.CliPrenom,
@@ -99,15 +99,17 @@ namespace Projet_Hotel_CodeBase.Metier
                         CliMotDePasse = c.CliMotDePasse,
                         CliTelephoneMobile = c.CliTelephoneMobile,
                         PkCliId = c.PkCliId
-                    }).ToArray(); 
+                    }).ToArray();
+                
+                return clients;
             }
         }
-        public ClientDTO[] GetClient(ClientDTO clientDTO)
+        public ClientDTO[] GetClientByName(ClientDTO clientDTO)
         {
             using (var db = new MyDbContext())
             {
 
-                var clients = db.Clients
+                var client = db.Clients
                              .Where(c => c.CliNom == clientDTO.CliNom || c.CliPrenom == clientDTO.CliPrenom)
                              .Select(c => new ClientDTO
                              {
@@ -121,8 +123,7 @@ namespace Projet_Hotel_CodeBase.Metier
                              })
                              .ToArray();
 
-                return clients;
-
+                return client;
             }
         }
         /// <summary>

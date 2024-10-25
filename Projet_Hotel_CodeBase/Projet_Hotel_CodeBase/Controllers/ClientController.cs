@@ -33,7 +33,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
         }
         
-        [HttpPost("Modifierlient")]
+        [HttpPost("ModifierClient")]
         public IActionResult ModifierClient([FromBody] ClientDTO clientDTO) 
         {
             try
@@ -48,23 +48,31 @@ namespace Projet_Hotel_CodeBase.Controllers
 
         }
         
-        [HttpGet("GetClient")]
-        public ClientDTO[] GetClient([FromQuery] string CliNom, [FromQuery] string CliPrenom)
+        [HttpGet("GetClientByName")]
+        public IActionResult GetClientByName([FromQuery] ClientDTO clientDTO)
         {
-
-            return clientMetier.GetClient(new ClientDTO { CliNom=CliNom, CliPrenom=CliPrenom});
-
+            try
+            {
+                ClientDTO[] client = clientMetier.GetClientByName(clientDTO);
+                return client == null ? NotFound() : Ok(client);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
         [HttpGet("GetClients")]
-        public ClientDTO[] GetClients()
+        public IActionResult GetClients()
         {
-
-            return clientMetier.GetClients();
-
-
+            try
+            {
+                ClientDTO[] client = clientMetier.GetClients();
+                return client == null ? NotFound() : Ok(client);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
-
-
-
     }
 }
