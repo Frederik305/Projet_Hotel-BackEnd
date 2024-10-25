@@ -57,9 +57,18 @@ namespace Projet_Hotel_CodeBase.Controllers
 
         }
         [HttpGet("afficherReservation")]
-        public ReservationDTO[] GetReservations()
+        public IActionResult GetReservations()
         {
-            return serviceReservation.GetReservations();
+            try
+            {
+                ReservationDTO[] reservations = serviceReservation.GetReservations();
+                return reservations == null ? NotFound() : Ok(reservations);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            //return serviceReservation.GetReservations();
         }
 
 
