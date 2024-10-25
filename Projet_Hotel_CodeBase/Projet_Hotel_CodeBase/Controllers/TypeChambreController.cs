@@ -18,9 +18,17 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpGet(Name = "GetTypeChambre")]
-        public TypeChambreDTO[] Get()
+        public IActionResult Get()
         {
-            return new TypeChambreMetier().GetTypeChambres();
+            try
+            {
+                TypeChambreDTO[] newTypeChambre = typeChambreMetier.AddTypeChambre(typeChambreDTO);
+                return newTypeChambre == null ? NotFound() : Ok(newTypeChambre);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost(Name ="PostNewTypeChambre")]
