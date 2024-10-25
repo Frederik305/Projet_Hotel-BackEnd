@@ -25,15 +25,31 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpGet("/GetChambres", Name = "GetChambres")]
-        public ChambreDTO[] Get() 
+        public IActionResult GetChambres() 
         {
-            return new ChambreMetier().RequestChambres();
+            try
+            {
+                ChambreDTO[] newChambre = chambreMetier.RequestChambres();
+                return newChambre == null ? NotFound() : Ok(newChambre);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
-        [HttpGet("/GetChambre/{numChambre}", Name = "GetChambreNum")]
-        public ChambreDTO[] Get(short numChambre)
+        [HttpGet("/GetChambreByNum", Name = "GetChambreNum")]
+        public IActionResult GetChambreByNum([FromQuery] ChambreDTO chambreDTO)
         {
-            return new ChambreMetier().RequestChambreByNum(numChambre);
+            try
+            {
+                ChambreDTO[] newChambre = chambreMetier.RequestChambreByNum(chambreDTO);
+                return newChambre == null ? NotFound() : Ok(newChambre);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [HttpPost("/CreeChambre", Name = "CreeChambre")]

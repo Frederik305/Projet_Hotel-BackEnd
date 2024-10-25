@@ -22,7 +22,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         {
             try
             {
-                TypeChambreDTO[] newTypeChambre = typeChambreMetier.AddTypeChambre(typeChambreDTO);
+                TypeChambreDTO[] newTypeChambre = typeChambreMetier.GetTypeChambres();
                 return newTypeChambre == null ? NotFound() : Ok(newTypeChambre);
             }
             catch (Exception e)

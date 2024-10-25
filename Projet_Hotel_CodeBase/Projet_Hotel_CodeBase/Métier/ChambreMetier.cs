@@ -21,12 +21,12 @@ namespace Projet_Hotel_CodeBase.Métier
             }
         }
 
-        public ChambreDTO[] RequestChambreByNum(short numChambre)
+        public ChambreDTO[] RequestChambreByNum(ChambreDTO chambreDTO)
         {
             using (var db = new MyDbContext())
             {
-                var chambreDTO = db.Chambres
-                    .Where(c => c.ChaNumero == numChambre)
+                var chambre = db.Chambres
+                    .Where(c => c.ChaNumero == chambreDTO.ChaNumero)
                     .Select(c => new ChambreDTO
                     {
                         PkChaId = c.PkChaId,
@@ -35,7 +35,7 @@ namespace Projet_Hotel_CodeBase.Métier
                         ChaAutreInfo = c.ChaAutreInfo,
                         FkTypId = c.FkTypId
                     }).ToArray();
-                return chambreDTO;
+                return chambre;
             }
         }
         public ChambreDTO AddChambre(ChambreDTO chambreDTO)
