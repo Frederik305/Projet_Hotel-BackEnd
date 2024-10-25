@@ -53,11 +53,8 @@ namespace Projet_Hotel_CodeBase.Métier
             }
             return true;
         }
-        public bool IsRoomAvailable(ReservationDTO reservationDTO)
+        public bool IsRoomAvailable(ReservationDTO reservationDTO, MyDbContext db)
         {
-
-            using (var db = new MyDbContext())
-            {
                 var reservationsChambre = db.Reservations.Where(r => r.Chambre.PkChaId == reservationDTO.FkChaId && r.PkResId != reservationDTO.PkResId).ToList();
                 foreach (var reservation in reservationsChambre)
                 {
@@ -68,9 +65,19 @@ namespace Projet_Hotel_CodeBase.Métier
                     }
 
                 }
-
-            }
             return true;
+        }
+        public bool DoesRoomExist(Guid chambreId, MyDbContext db)
+        {
+
+            return db.Chambres.Any(c => c.PkChaId == chambreId);
+
+        }
+        public bool DoesReservationExist(ReservationDTO reservationDTO, MyDbContext db)
+        {
+
+            return db.Reservations.Any(r => r.PkResId == reservationDTO.PkResId);
+
         }
     }
 }

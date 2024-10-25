@@ -9,6 +9,7 @@ namespace Projet_Hotel_CodeBase.Controllers
     [Route("[controller]")]
     public class TypeChambreController : ControllerBase
     {
+        private TypeChambreMetier typeChambreMetier = new TypeChambreMetier();
         private readonly ILogger<TypeChambreController> _logger;
 
         public TypeChambreController(ILogger<TypeChambreController> logger)
@@ -23,14 +24,16 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpPost(Name ="PostNewTypeChambre")]
-        public void Post(TypeChambreDTO typeChambre) {
-            
-            new TypeChambreMetier().AddTypeChambre(typeChambre);
-
-
-
+        public IActionResult AddTypeChambre(TypeChambreDTO typeChambreDTO) {
+            try
+            {
+                TypeChambreDTO newTypeChambre = typeChambreMetier.AddTypeChambre(typeChambreDTO);
+                return newTypeChambre == null ? NotFound() : Ok(newTypeChambre);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
-
-
     }
 }

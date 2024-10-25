@@ -19,7 +19,7 @@ public class TypeChambreMetier
 
         }
     }
-    public void AddTypeChambre(TypeChambreDTO typeChambreDTO)
+    public TypeChambreDTO AddTypeChambre(TypeChambreDTO typeChambreDTO)
     {
 
         using (var context = new MyDbContext())
@@ -31,15 +31,18 @@ public class TypeChambreMetier
                 TypDescription = typeChambreDTO.TypDescription,
                 TypPrixPlafond = typeChambreDTO.TypPrixPlafond,
                 TypPrixPlancher = typeChambreDTO.TypPrixPlancher,
-
-
             };
-                context.TypeChambres.Add(typeChambre);
+            context.TypeChambres.Add(typeChambre);
             context.SaveChanges(); // Sauvegarde les changements dans la base de données
+
+            return new TypeChambreDTO
+            {
+                PkTypId = typeChambre.PkTypId,
+                TypNomType = typeChambre.TypNomType,
+                TypDescription = typeChambre.TypDescription,
+                TypPrixPlafond = typeChambre.TypPrixPlafond,
+                TypPrixPlancher = typeChambre.TypPrixPlancher,
+            };
         }
     }
-        
-    
-        
-    
 }
