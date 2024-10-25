@@ -131,7 +131,7 @@ namespace Projet_Hotel_CodeBase.Metier
             {
                 return context.Reservations.Select(r => new ReservationDTO
                 {
-                    PkResId = Guid.NewGuid(),
+                    PkResId = r.PkResId,
                     ResAutre = r.ResAutre,
                     ResDateDebut = r.ResDateDebut,
                     ResDateFin = r.ResDateFin,
