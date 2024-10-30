@@ -34,6 +34,6 @@ Swashbuckle.AspNetCore 6.4.0
 
 dans le projet ajouter un nouveau élément. Sélectionner "En ligne", rechercher pour "EntityFramework Reverse POCO Generator" dans les Modèles et ajouter l'élément au projet.
 
-exécuter la requête suivante dans la base de données du serveur local ssms pour avoir le string de connexion: select'data source=' + @@servername +';initial catalog=' + db_name() +case type_desc when 'WINDOWS_LOGIN'then ';trusted_connection=true'else';user id=' + suser_name() + ';password=<<YourPassword>>'endas ConnectionStringfrom sys.server_principalswhere name = suser_name()
+exécuter la requête suivante dans la base de données du serveur local ssms pour avoir le string de connexion: select'data source=' + @@servername +';initial catalog=' + db_name() +case type_desc when 'WINDOWS_LOGIN'then ';trusted_connection=true'else';user id=' + suser_name() + ';password=<<YourPassword>>'end as ConnectionString from sys.server_principals where name = suser_name();
 
 ensuite dans le ficher "Database.tt" du projet Visual studio, ajouter le string de connexion à la fin de la ligne suivante = : "Settings.ConnectionString        = " 
