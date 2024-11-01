@@ -39,7 +39,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
             catch (Exception e) 
             {
-                return BadRequest(e.Message);
+                return BadRequest("Action non autoriser"/*e.Message*/);
             }
 
         }
