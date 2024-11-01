@@ -45,12 +45,12 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
         private JwtSecurityToken GenerateAccessToken(string courriel)
         {
-            // Create user claims
+            
             var claims = new List<Claim>
-        {
+            {
             new Claim(ClaimTypes.Name, courriel),
-            // Add additional claims as needed (e.g., roles, etc.)
-        };
+            
+            };
 
             // Create a JWT
             var token = new JwtSecurityToken(
