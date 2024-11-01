@@ -91,16 +91,16 @@ namespace Projet_Hotel_CodeBase.Metier
             {
 
                 var clients = db.Clients.Select(c => new ClientDTO
-                    {
-                        CliNom = c.CliNom,
-                        CliPrenom = c.CliPrenom,
-                        CliAddresseResidence = c.CliAddresseResidence,
-                        CliCourriel = c.CliCourriel,
-                        CliMotDePasse = c.CliMotDePasse,
-                        CliTelephoneMobile = c.CliTelephoneMobile,
-                        PkCliId = c.PkCliId
-                    }).ToArray();
-                
+                {
+                    CliNom = c.CliNom,
+                    CliPrenom = c.CliPrenom,
+                    CliAddresseResidence = c.CliAddresseResidence,
+                    CliCourriel = c.CliCourriel,
+                    CliMotDePasse = c.CliMotDePasse,
+                    CliTelephoneMobile = c.CliTelephoneMobile,
+                    PkCliId = c.PkCliId
+                }).ToArray();
+
                 return clients;
             }
         }

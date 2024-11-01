@@ -1,5 +1,4 @@
 ﻿using System.ComponentModel.DataAnnotations.Schema;
-using System.Text.Json.Serialization;
 
 namespace Projet_Hotel_CodeBase.DTO
 {
@@ -22,7 +21,7 @@ namespace Projet_Hotel_CodeBase.DTO
 
         [Column(TypeName = "uniqueidentifier")]
         public Guid FkCliId { get; set; }
-      
+
         [Column(TypeName = "uniqueidentifier")]
         public Guid FkChaId { get; set; }
 

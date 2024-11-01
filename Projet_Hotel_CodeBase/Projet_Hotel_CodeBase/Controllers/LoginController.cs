@@ -1,12 +1,10 @@
 ﻿using Microsoft.AspNetCore.Mvc;
-using Microsoft.Extensions.Configuration;
 using Microsoft.IdentityModel.Tokens;
-using System.ComponentModel.DataAnnotations;
+using Projet_Hotel_CodeBase.DTO;
+using Projet_Hotel_CodeBase.Métier;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
-using Projet_Hotel_CodeBase.DTO;
-using Projet_Hotel_CodeBase.Métier;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -31,25 +29,25 @@ namespace Projet_Hotel_CodeBase.Controllers
             {
                 // Check user credentials in DataBase
                 LoginDTO nouveauLoginDTO = loginMetier.login(loginDTO);
-                
+
                 // generate token for user
                 var token = GenerateAccessToken(loginDTO.LogCourriel);
                 // return access token for user's use
                 return Ok(new { AccessToken = new JwtSecurityTokenHandler().WriteToken(token) });
             }
-            catch (Exception e) 
+            catch (Exception e)
             {
-                return BadRequest("Action non autoriser"/*e.Message*/);
+                return BadRequest(e.Message);
             }
 
         }
         private JwtSecurityToken GenerateAccessToken(string courriel)
         {
-            
+
             var claims = new List<Claim>
             {
-            new Claim(ClaimTypes.Name, courriel),
-            
+                new Claim(ClaimTypes.Name, courriel),
+
             };
 
             // Create a JWT
@@ -65,6 +63,6 @@ namespace Projet_Hotel_CodeBase.Controllers
 
             return token;
         }
-        
+
     }
 }

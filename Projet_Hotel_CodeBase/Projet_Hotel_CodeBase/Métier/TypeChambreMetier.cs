@@ -7,15 +7,15 @@ public class TypeChambreMetier
     {
         using (var context = new MyDbContext())
         {
-            return context.TypeChambres.Select(t=> new TypeChambreDTO
+            return context.TypeChambres.Select(t => new TypeChambreDTO
             {
                 PkTypId = t.PkTypId,
-                TypNomType=t.TypNomType,
-                TypDescription=t.TypDescription,
-                TypPrixPlafond=t.TypPrixPlafond,
-                TypPrixPlancher=t.TypPrixPlancher
+                TypNomType = t.TypNomType,
+                TypDescription = t.TypDescription,
+                TypPrixPlafond = t.TypPrixPlafond,
+                TypPrixPlancher = t.TypPrixPlancher
             }).ToArray();
-                
+
 
         }
     }

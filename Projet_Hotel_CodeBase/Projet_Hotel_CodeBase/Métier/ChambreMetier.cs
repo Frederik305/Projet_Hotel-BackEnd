@@ -1,6 +1,4 @@
-﻿using Microsoft.EntityFrameworkCore.Query.Internal;
-using Projet_Hotel_CodeBase.DTO;
-using System.Linq;
+﻿using Projet_Hotel_CodeBase.DTO;
 
 namespace Projet_Hotel_CodeBase.Métier
 {
@@ -121,7 +119,7 @@ namespace Projet_Hotel_CodeBase.Métier
 
             }
 
-           
+
         }
     }
 }

@@ -1,10 +1,7 @@
-﻿
-
-using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Projet_Hotel_CodeBase.Metier;
 using Projet_Hotel_CodeBase.DTO;
-using Microsoft.AspNetCore.Authorization;
+using Projet_Hotel_CodeBase.Metier;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -12,8 +9,8 @@ namespace Projet_Hotel_CodeBase.Controllers
     [Route("[controller]")]
 
     public class ReservationController : ControllerBase
-    { 
-        private ReservationMetier serviceReservation=new ReservationMetier();
+    {
+        private ReservationMetier serviceReservation = new ReservationMetier();
         private readonly ILogger<ReservationController> _logger;
         public ReservationController(ILogger<ReservationController> logger)
         {
@@ -24,7 +21,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         [HttpPost("modifierReservation")]
         public IActionResult ModifierReservation(ReservationDTO reservationDTO)
         {
-           
+
             try
             {
                 ReservationDTO reservationModifier = serviceReservation.ModifierReservation(reservationDTO);
@@ -44,12 +41,12 @@ namespace Projet_Hotel_CodeBase.Controllers
         [HttpPost("ajouterReservation")]
         public IActionResult AddReservation(ReservationDTO reservationDTO)
         {
-            
+
             try
             {
-                ReservationDTO nouvelleReservation= serviceReservation.AddReservation(reservationDTO);
+                ReservationDTO nouvelleReservation = serviceReservation.AddReservation(reservationDTO);
 
-                
+
                 return nouvelleReservation == null ? NotFound() : Ok(nouvelleReservation);
             }
             catch (Exception ex)

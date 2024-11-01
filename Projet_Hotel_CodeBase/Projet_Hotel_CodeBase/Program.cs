@@ -46,9 +46,9 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         {
             ValidateIssuer = true,
             ValidateAudience = true,
-            ValidateLifetime = true, 
+            ValidateLifetime = true,
             ValidateIssuerSigningKey = true,
-            ValidIssuer = configuration["JwtSettings:Issuer"], 
+            ValidIssuer = configuration["JwtSettings:Issuer"],
             ValidAudience = configuration["JwtSettings:Audience"], // From appsettings.json
             IssuerSigningKey = new SymmetricSecurityKey(Encoding.UTF8.GetBytes(configuration["JwtSettings:SecretKey"])) // From appsettings.json
         };

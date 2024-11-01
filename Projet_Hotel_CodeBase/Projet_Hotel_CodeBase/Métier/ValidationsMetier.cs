@@ -63,16 +63,16 @@ namespace Projet_Hotel_CodeBase.Métier
         }
         public bool IsRoomAvailable(ReservationDTO reservationDTO, MyDbContext db)
         {
-                var reservationsChambre = db.Reservations.Where(r => r.Chambre.PkChaId == reservationDTO.FkChaId && r.PkResId != reservationDTO.PkResId).ToList();
-                foreach (var reservation in reservationsChambre)
+            var reservationsChambre = db.Reservations.Where(r => r.Chambre.PkChaId == reservationDTO.FkChaId && r.PkResId != reservationDTO.PkResId).ToList();
+            foreach (var reservation in reservationsChambre)
+            {
+                // Si la nouvelle réservation chevauche une réservation existante, la chambre n'est pas disponible
+                if (reservation.ResDateDebut < reservationDTO.ResDateFin && reservation.ResDateFin > reservationDTO.ResDateDebut)
                 {
-                    // Si la nouvelle réservation chevauche une réservation existante, la chambre n'est pas disponible
-                    if (reservation.ResDateDebut < reservationDTO.ResDateFin && reservation.ResDateFin > reservationDTO.ResDateDebut)
-                    {
-                        return false; // Chambre non disponible
-                    }
-
+                    return false; // Chambre non disponible
                 }
+
+            }
             return true;
         }
         public bool DoesRoomExist(Guid chambreId, MyDbContext db)

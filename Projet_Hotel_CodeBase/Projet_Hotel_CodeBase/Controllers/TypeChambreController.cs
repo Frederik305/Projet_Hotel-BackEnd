@@ -1,8 +1,7 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Projet_Hotel_CodeBase.Metier;
 using Projet_Hotel_CodeBase.DTO;
-using Microsoft.AspNetCore.Authorization;
+using Projet_Hotel_CodeBase.Metier;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -34,8 +33,9 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [Authorize]
-        [HttpPost(Name ="PostNewTypeChambre")]
-        public IActionResult AddTypeChambre(TypeChambreDTO typeChambreDTO) {
+        [HttpPost(Name = "PostNewTypeChambre")]
+        public IActionResult AddTypeChambre(TypeChambreDTO typeChambreDTO)
+        {
             try
             {
                 TypeChambreDTO newTypeChambre = typeChambreMetier.AddTypeChambre(typeChambreDTO);

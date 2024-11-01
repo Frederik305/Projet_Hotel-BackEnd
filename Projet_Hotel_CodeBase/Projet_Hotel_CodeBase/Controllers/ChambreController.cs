@@ -1,27 +1,14 @@
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using Microsoft.EntityFrameworkCore;
-using Microsoft.EntityFrameworkCore.ChangeTracking;
-using Microsoft.EntityFrameworkCore.Metadata.Internal;
-using Microsoft.EntityFrameworkCore.Storage;
-using Microsoft.IdentityModel.Tokens;
 using Projet_Hotel_CodeBase.DTO;
 using Projet_Hotel_CodeBase.Métier;
-using Projet_Hotel_CodeBase.Metier;
-using System.ComponentModel.DataAnnotations;
-using System.IdentityModel.Tokens.Jwt;
-using System.Linq;
-using System.Security.Claims;
-using System.Text;
-using Projet_Hotel_CodeBase;
-using Microsoft.AspNetCore.Identity;
 namespace Projet_Hotel_CodeBase.Controllers
 {
     [ApiController]
     [Route("[controller]")]
 
-    public class ChambreController : ControllerBase   
-    { 
+    public class ChambreController : ControllerBase
+    {
         private ChambreMetier chambreMetier = new ChambreMetier();
 
         private readonly ILogger<ChambreController> _logger;
@@ -29,12 +16,12 @@ namespace Projet_Hotel_CodeBase.Controllers
         public ChambreController(ILogger<ChambreController> logger)
         {
             _logger = logger;
-           
+
         }
 
         [Authorize]
         [HttpGet("/GetChambres", Name = "GetChambres")]
-        public IActionResult GetChambres() 
+        public IActionResult GetChambres()
         {
             try
             {
@@ -114,6 +101,6 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
         }
     }
-    
+
 
 }

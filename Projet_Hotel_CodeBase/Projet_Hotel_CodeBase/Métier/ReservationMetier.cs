@@ -10,10 +10,10 @@ namespace Projet_Hotel_CodeBase.Metier
         //Logan
         public void CancelReservation(ReservationDTO reservationDTO)
         {
-            
+
             using (var db = new MyDbContext())
             {
-                if (!validationMetier.DoesReservationExist(reservationDTO,db))
+                if (!validationMetier.DoesReservationExist(reservationDTO, db))
                 {
                     throw new Exception("La reservation spécifié n'existe pas.");
                 }
@@ -28,9 +28,10 @@ namespace Projet_Hotel_CodeBase.Metier
 
 
                 }
-                else { 
-                    throw new Exception("La réservation entré n'existe pas."); 
-                
+                else
+                {
+                    throw new Exception("La réservation entré n'existe pas.");
+
                 }
 
             }
@@ -38,24 +39,24 @@ namespace Projet_Hotel_CodeBase.Metier
         //Logan
         public ReservationDTO ModifierReservation(ReservationDTO reservationDTO)
         {
-            
-            
 
-            using (var db = new MyDbContext()) 
-            { 
 
-                if (!validationMetier.DoesReservationExist(reservationDTO,db))
+
+            using (var db = new MyDbContext())
+            {
+
+                if (!validationMetier.DoesReservationExist(reservationDTO, db))
                 {
                     throw new Exception("La reservation spécifié n'existe pas.");
                 }
 
-                if (!validationMetier.DoesRoomExist(reservationDTO.FkChaId,db))
+                if (!validationMetier.DoesRoomExist(reservationDTO.FkChaId, db))
                 {
                     throw new Exception("La chambre spécifié n'existe pas.");
                 }
 
 
-                if (!validationMetier.IsRoomAvailable(reservationDTO,db))
+                if (!validationMetier.IsRoomAvailable(reservationDTO, db))
                 {
                     throw new Exception("Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
                 }
@@ -87,7 +88,7 @@ namespace Projet_Hotel_CodeBase.Metier
         {
             using (var db = new MyDbContext())
             {
-                if (!validationMetier.DoesRoomExist(reservationDTO.FkChaId,db))
+                if (!validationMetier.DoesRoomExist(reservationDTO.FkChaId, db))
                 {
                     throw new Exception("La chambre spécifié n'existe pas.");
                 }
@@ -111,7 +112,7 @@ namespace Projet_Hotel_CodeBase.Metier
 
                 db.Reservations.Add(nouvelleReservation);
                 db.SaveChanges();
-              
+
                 return new ReservationDTO
                 {
                     PkResId = nouvelleReservation.PkResId,
@@ -136,12 +137,12 @@ namespace Projet_Hotel_CodeBase.Metier
                     ResDateDebut = r.ResDateDebut,
                     ResDateFin = r.ResDateFin,
                     ResPrixJour = r.ResPrixJour,
-                    FkChaId= r.Chambre.PkChaId,
-                    FkCliId= r.Client.PkCliId
+                    FkChaId = r.Chambre.PkChaId,
+                    FkCliId = r.Client.PkCliId
 
                 }).ToArray();
             }
         }
     }
-    
+
 }

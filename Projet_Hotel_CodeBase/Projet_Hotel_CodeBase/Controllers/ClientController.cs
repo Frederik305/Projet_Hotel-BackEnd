@@ -1,17 +1,14 @@
 ﻿using Microsoft.AspNetCore.Authorization;
-using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projet_Hotel_CodeBase.DTO;
 using Projet_Hotel_CodeBase.Metier;
-using System.ComponentModel.DataAnnotations;
-using System.Net;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
     [ApiController]
     [Route("[controller]")]
 
-   
+
     public class ClientController : ControllerBase
     {
         private ClientMetier clientMetier = new ClientMetier();
@@ -25,19 +22,22 @@ namespace Projet_Hotel_CodeBase.Controllers
 
         [Authorize]
         [HttpPost("AddClient")]
-        public IActionResult AddClient([FromBody]ClientDTO clientDTO)
+        public IActionResult AddClient([FromBody] ClientDTO clientDTO)
         {
-            try {
+            try
+            {
                 ClientDTO nouveauClient = clientMetier.AddClient(clientDTO);
                 return nouveauClient == null ? NotFound() : Ok(nouveauClient);
-            } catch(Exception e) {
+            }
+            catch (Exception e)
+            {
                 return BadRequest(e.Message);
             }
         }
 
         [Authorize]
         [HttpPost("ModifierClient")]
-        public IActionResult ModifierClient([FromBody] ClientDTO clientDTO) 
+        public IActionResult ModifierClient([FromBody] ClientDTO clientDTO)
         {
             try
             {
