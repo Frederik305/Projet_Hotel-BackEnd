@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Projet_Hotel_CodeBase.Metier;
 using Projet_Hotel_CodeBase.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -17,6 +18,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         [HttpGet(Name = "GetTypeChambre")]
         public IActionResult Get()
         {
@@ -31,6 +33,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost(Name ="PostNewTypeChambre")]
         public IActionResult AddTypeChambre(TypeChambreDTO typeChambreDTO) {
             try

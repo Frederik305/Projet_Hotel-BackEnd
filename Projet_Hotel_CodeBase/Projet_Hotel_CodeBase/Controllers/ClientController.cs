@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Http;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projet_Hotel_CodeBase.DTO;
 using Projet_Hotel_CodeBase.Metier;
@@ -22,6 +23,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         [HttpPost("AddClient")]
         public IActionResult AddClient([FromBody]ClientDTO clientDTO)
         {
@@ -32,7 +34,8 @@ namespace Projet_Hotel_CodeBase.Controllers
                 return BadRequest(e.Message);
             }
         }
-        
+
+        [Authorize]
         [HttpPost("ModifierClient")]
         public IActionResult ModifierClient([FromBody] ClientDTO clientDTO) 
         {
@@ -47,7 +50,8 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
 
         }
-        
+
+        [Authorize]
         [HttpGet("GetClientByName")]
         public IActionResult GetClientByName([FromQuery] ClientDTO clientDTO)
         {
@@ -61,6 +65,8 @@ namespace Projet_Hotel_CodeBase.Controllers
                 return BadRequest(e.Message);
             }
         }
+
+        [Authorize]
         [HttpGet("GetClients")]
         public IActionResult GetClients()
         {
