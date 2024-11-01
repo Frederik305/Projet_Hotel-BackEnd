@@ -4,6 +4,7 @@ using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
 using Projet_Hotel_CodeBase.Metier;
 using Projet_Hotel_CodeBase.DTO;
+using Microsoft.AspNetCore.Authorization;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -19,6 +20,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             _logger = logger;
         }
 
+        [Authorize]
         [HttpPost("modifierReservation")]
         public IActionResult ModifierReservation(ReservationDTO reservationDTO)
         {
@@ -38,6 +40,7 @@ namespace Projet_Hotel_CodeBase.Controllers
 
         }
 
+        [Authorize]
         [HttpPost("ajouterReservation")]
         public IActionResult AddReservation(ReservationDTO reservationDTO)
         {
@@ -56,6 +59,8 @@ namespace Projet_Hotel_CodeBase.Controllers
 
 
         }
+
+        [Authorize]
         [HttpGet("afficherReservation")]
         public IActionResult GetReservations()
         {
@@ -71,7 +76,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             //return serviceReservation.GetReservations();
         }
 
-
+        [Authorize]
         [HttpPost("annulerReservation")]
         public IActionResult CancelReservation([FromBody] ReservationDTO reservationDTO)
         {

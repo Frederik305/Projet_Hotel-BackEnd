@@ -23,6 +23,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             _logger = logger;
             _configuration = configuration;
         }
+
         [HttpPost("login")]
         public IActionResult Login([FromBody] LoginDTO loginDTO)
         {

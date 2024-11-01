@@ -47,6 +47,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
         }
 
+        [Authorize]
         [HttpGet("/GetChambreByNum", Name = "GetChambreNum")]
         public IActionResult GetChambreByNum([FromQuery] ChambreDTO chambreDTO)
         {
@@ -61,6 +62,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("/CreeChambre", Name = "CreeChambre")]
         public IActionResult Post([FromBody] ChambreDTO chambreDTO)
         {
@@ -75,6 +77,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
         }
 
+        [Authorize]
         [HttpPost("modifierChambre")]
         public IActionResult ModifierChambre(ChambreDTO chambreDTO)
         {
@@ -93,6 +96,8 @@ namespace Projet_Hotel_CodeBase.Controllers
 
 
         }
+
+        [Authorize]
         [HttpGet("/GetAvailableChambre/")]
         public IActionResult GetAvailableRoom([FromQuery] ReservationDTO reservationDTO)
         {
