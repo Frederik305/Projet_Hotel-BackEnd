@@ -25,21 +25,12 @@ namespace Projet_Hotel_CodeBase.Controllers
         private ChambreMetier chambreMetier = new ChambreMetier();
 
         private readonly ILogger<ChambreController> _logger;
-        private readonly IConfiguration _configuration;
 
         public ChambreController(ILogger<ChambreController> logger)
         {
             _logger = logger;
            
         }
-        
-        
-
-        
-
-        
-
-
 
         [Authorize]
         [HttpGet("/GetChambres", Name = "GetChambres")]

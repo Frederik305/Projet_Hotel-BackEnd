@@ -4,6 +4,14 @@ namespace Projet_Hotel_CodeBase.Métier
 {
     public class ValidationsMetier
     {
+        public bool IsValidClient(LoginDTO loginDTO, MyDbContext db)
+        {
+            var hasSameEmailAndPasswordAsClient = db.Clients
+                .Any(c => c.CliCourriel == loginDTO.LogCourriel && c.CliMotDePasse == loginDTO.LogMotDePasse);
+
+            return hasSameEmailAndPasswordAsClient;
+        }
+
         public bool TelephoneExists(ClientDTO clientDTO, MyDbContext db)
         {
             var client = db.Clients

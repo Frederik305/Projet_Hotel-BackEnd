@@ -14,27 +14,32 @@ namespace Projet_Hotel_CodeBase.Controllers
     [Route("[controller]")]
     public class LoginController : ControllerBase
     {
-        private readonly ILogger<ChambreController> _logger;
+        private readonly ILogger<LoginController> _logger;
         private readonly IConfiguration _configuration;
-        public LoginController(ILogger<ChambreController> logger, IConfiguration configuration)
+        private LoginMetier loginMetier = new LoginMetier();
+
+        public LoginController(ILogger<LoginController> logger, IConfiguration configuration)
         {
             _logger = logger;
             _configuration = configuration;
         }
         [HttpPost("login")]
-        public IActionResult Login([FromBody] LoginDTO model)
+        public IActionResult Login([FromBody] LoginDTO loginDTO)
         {
-            // Check user credentials (in a real application, you'd authenticate against a database)
-            if (model is { LogCourriel: "demo", LogMotDePasse: "password" })
+            try
             {
+                // Check user credentials in DataBase
+                LoginDTO nouveauLoginDTO = loginMetier.login(loginDTO);
+                
                 // generate token for user
-                var token = GenerateAccessToken(model.LogCourriel);
+                var token = GenerateAccessToken(loginDTO.LogCourriel);
                 // return access token for user's use
                 return Ok(new { AccessToken = new JwtSecurityTokenHandler().WriteToken(token) });
-
             }
-            // unauthorized user
-            return Unauthorized("Invalid credentials");
+            catch (Exception e) 
+            {
+                return BadRequest(e.Message);
+            }
 
         }
         private JwtSecurityToken GenerateAccessToken(string courriel)
