@@ -74,6 +74,22 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [Authorize]
+        [HttpGet("rechercherReservation")]
+        public IActionResult RechercherReservations([FromQuery] ReservationDTO reservationDTO)
+        {
+            try
+            {
+                ReservationDTO[] reservations = serviceReservation.SearchReservation(reservationDTO);
+                return reservations.Length == 0 ? NotFound() : Ok(reservations);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+            //return serviceReservation.GetReservations();
+        }
+
+        [Authorize]
         [HttpPost("annulerReservation")]
         public IActionResult CancelReservation([FromBody] ReservationDTO reservationDTO)
         {
