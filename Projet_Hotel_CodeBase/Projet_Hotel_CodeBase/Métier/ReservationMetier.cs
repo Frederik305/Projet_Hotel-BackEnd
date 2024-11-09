@@ -62,8 +62,8 @@ namespace Projet_Hotel_CodeBase.Metier
                 }
                 var reservation = db.Reservations.FirstOrDefault(r => r.PkResId == reservationDTO.PkResId);
 
-                reservation.ResDateDebut = reservationDTO.ResDateDebut;
-                reservation.ResDateFin = reservationDTO.ResDateFin;
+                reservation.ResDateDebut = (DateTime)reservationDTO.ResDateDebut;
+                reservation.ResDateFin = (DateTime)reservationDTO.ResDateFin;
                 reservation.ResPrixJour = reservationDTO.ResPrixJour;
                 reservation.FkChaId = reservationDTO.FkChaId;
 
@@ -103,8 +103,8 @@ namespace Projet_Hotel_CodeBase.Metier
                 {
                     PkResId = Guid.NewGuid(),
                     ResAutre = reservationDTO.ResAutre,
-                    ResDateDebut = reservationDTO.ResDateDebut,
-                    ResDateFin = reservationDTO.ResDateFin,
+                    ResDateDebut = (DateTime)reservationDTO.ResDateDebut,
+                    ResDateFin = (DateTime)reservationDTO.ResDateFin,
                     ResPrixJour = reservationDTO.ResPrixJour,
                     Chambre = chambre,
                     Client = client
@@ -140,6 +140,51 @@ namespace Projet_Hotel_CodeBase.Metier
                     FkChaId = r.Chambre.PkChaId,
                     FkCliId = r.Client.PkCliId
 
+                }).ToArray();
+            }
+        }
+
+        public ReservationDTO[] SearchReservation(ReservationDTO reservationDTO)
+        {
+            using (var db = new MyDbContext())
+            {
+                // Start with the Reservations table and apply filters based on the provided DTO
+                var query = db.Reservations.AsQueryable();
+
+                // Filter by Reservation start date, if provided
+                if (reservationDTO.ResDateDebut != null)
+                {
+                    query = query.Where(r => r.ResDateDebut == reservationDTO.ResDateDebut);
+                }
+
+                // Filter by Reservation end date, if provided
+                if (reservationDTO.ResDateFin != null)
+                {
+                    query = query.Where(r => r.ResDateFin == reservationDTO.ResDateFin);
+                }
+
+                // Filter by Room ID, if provided
+                if (reservationDTO.FkChaId != Guid.Empty)
+                {
+                    query = query.Where(r => r.FkChaId == reservationDTO.FkChaId);
+                }
+
+                // Filter by Client ID, if provided
+                if (reservationDTO.FkCliId != Guid.Empty)
+                {
+                    query = query.Where(r => r.FkCliId == reservationDTO.FkCliId);
+                }
+
+                // Execute the query and map the results to ReservationDTO
+                return query.Select(r => new ReservationDTO
+                {
+                    PkResId = r.PkResId,
+                    ResAutre = r.ResAutre,
+                    ResDateDebut = r.ResDateDebut,
+                    ResDateFin = r.ResDateFin,
+                    ResPrixJour = r.ResPrixJour,
+                    FkChaId = r.FkChaId,
+                    FkCliId = r.FkCliId
                 }).ToArray();
             }
         }
