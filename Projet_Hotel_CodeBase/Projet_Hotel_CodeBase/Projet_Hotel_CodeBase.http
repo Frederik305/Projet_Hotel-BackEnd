@@ -1,6 +1,10 @@
 @Projet_Hotel_CodeBase_HostAddress = http://localhost:5292
 
-GET {{Projet_Hotel_CodeBase_HostAddress}}/weatherforecast/
-Accept: application/json
-
+POST {{Projet_Hotel_CodeBase_HostAddress}}/Login/login
+Content-Type: application/json
+{
+    "logCourriel": "string",
+  "logMotDePasse": "string"
+    
+}
 ###

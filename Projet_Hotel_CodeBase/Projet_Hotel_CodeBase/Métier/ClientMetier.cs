@@ -126,6 +126,9 @@ namespace Projet_Hotel_CodeBase.Metier
                 return client;
             }
         }
+
+
+
         /// <summary>
         /// Récupère un client par son identifiant.
         /// </summary>
@@ -155,15 +158,6 @@ namespace Projet_Hotel_CodeBase.Metier
             }
         }
 
-        public void loggin(ClientDTO clientDTO)
-        {
-            using (var db = new MyDbContext())
-            {
-                if (validationsMetier.EmailExists(clientDTO, db) && validationsMetier.PasswordExists(clientDTO, db))
-                {
-                    Console.WriteLine($"utilisateur: " + clientDTO.CliCourriel);
-                }
-            }
-        }
+        
     }
 }

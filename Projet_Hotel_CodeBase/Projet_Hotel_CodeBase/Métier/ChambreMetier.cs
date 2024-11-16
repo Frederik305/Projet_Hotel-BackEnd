@@ -36,6 +36,23 @@ namespace Projet_Hotel_CodeBase.Métier
                 return chambre;
             }
         }
+        public ChambreDTO GetChambreById(ChambreDTO chambreDTO)
+        {
+            using (var db = new MyDbContext())
+            {
+                var chambre = db.Chambres
+                    .Where(c => c.PkChaId == chambreDTO.PkChaId)
+                    .Select(c => new ChambreDTO
+                    {
+                        PkChaId = c.PkChaId,
+                        ChaNumero = c.ChaNumero,
+                        ChaEtat = c.ChaEtat,
+                        ChaAutreInfo = c.ChaAutreInfo,
+                        FkTypId = c.FkTypId
+                    }).FirstOrDefault();
+                return chambre;
+            }
+        }
         public ChambreDTO AddChambre(ChambreDTO chambreDTO)
         {
             using (var db = new MyDbContext())

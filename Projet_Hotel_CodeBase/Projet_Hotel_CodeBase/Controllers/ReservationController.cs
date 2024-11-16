@@ -93,7 +93,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         [HttpPost("annulerReservation")]
         public IActionResult CancelReservation([FromBody] ReservationDTO reservationDTO)
         {
-            if (reservationDTO.PkResId == null || reservationDTO.PkResId.Equals(""))
+            if (reservationDTO.PkResId.Equals(""))
             {
                 return BadRequest("Veuillez entrer une réservation");
             }

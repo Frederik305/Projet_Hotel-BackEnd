@@ -66,6 +66,22 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
         }
 
+
+        [Authorize]
+        [HttpGet("GetClientById")]
+        public IActionResult GetClientById([FromQuery] ClientDTO clientDTO)
+        {
+            try
+            {
+                ClientDTO client = clientMetier.GetClientById(clientDTO);
+                return client == null ? NotFound() : Ok(client);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
+
         [Authorize]
         [HttpGet("GetClients")]
         public IActionResult GetClients()
