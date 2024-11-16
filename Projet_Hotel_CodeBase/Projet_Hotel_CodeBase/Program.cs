@@ -54,9 +54,27 @@ builder.Services.AddAuthentication(JwtBearerDefaults.AuthenticationScheme)
         };
     });
 
+// Add CORS policy
+builder.Services.AddCors(options =>
+{
+    options.AddPolicy("AllowAllOrigins", policy =>
+    {
+        policy.AllowAnyOrigin()  // Accept any origin
+              .AllowAnyMethod()  // Accept any HTTP method
+              .AllowAnyHeader(); // Accept any headers
+    });
+});
+
 var app = builder.Build();
 
-app.UseHttpsRedirection();
+//app.UseHttpsRedirection();
+app.UseWhen(context => context.Request.Method == "OPTIONS", appBuilder =>
+{
+    appBuilder.UseCors("AllowAllOrigins");
+});
+
+// Apply CORS policy
+app.UseCors("AllowAllOrigins");
 
 // Add authentication and authorization middleware
 app.UseAuthentication();
