@@ -56,7 +56,7 @@ namespace Projet_Hotel_CodeBase.Controllers
                  issuer: _configuration["JwtSettings:Issuer"],
                  audience: _configuration["JwtSettings:Audience"],
                  claims: claims,
-                 expires: DateTime.UtcNow.AddMinutes(1), // Token expiration time
+                 expires: DateTime.UtcNow.AddMinutes(60), // Token expiration time
                  signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"])),
                      SecurityAlgorithms.HmacSha256));
 

@@ -20,7 +20,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             _logger = logger;
         }
 
-        [Authorize]
+        
         [HttpPost("AddClient")]
         public IActionResult AddClient([FromBody] ClientDTO clientDTO)
         {

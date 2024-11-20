@@ -86,7 +86,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             {
                 return BadRequest(e.Message);
             }
-            //return serviceReservation.GetReservations();
+            
         }
 
         [Authorize]

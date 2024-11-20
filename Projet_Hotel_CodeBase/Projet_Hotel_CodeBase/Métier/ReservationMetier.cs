@@ -162,7 +162,11 @@ namespace Projet_Hotel_CodeBase.Metier
                 {
                     query = query.Where(r => r.ResDateFin == reservationDTO.ResDateFin);
                 }
-
+                if (reservationDTO.ResPrixJour != 0)
+                {
+                    query = query.Where(r => r.ResPrixJour == reservationDTO.ResPrixJour);
+                }
+                /*
                 // Filter by Room ID, if provided
                 if (reservationDTO.FkChaId != Guid.Empty)
                 {
@@ -173,7 +177,7 @@ namespace Projet_Hotel_CodeBase.Metier
                 if (reservationDTO.FkCliId != Guid.Empty)
                 {
                     query = query.Where(r => r.FkCliId == reservationDTO.FkCliId);
-                }
+                }*/
 
                 // Execute the query and map the results to ReservationDTO
                 return query.Select(r => new ReservationDTO
