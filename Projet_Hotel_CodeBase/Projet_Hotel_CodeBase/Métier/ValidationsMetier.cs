@@ -7,6 +7,7 @@ namespace Projet_Hotel_CodeBase.Métier
         public bool IsValidClient(LoginDTO loginDTO, MyDbContext db)
         {
             var hasSameEmailAndPasswordAsClient = db.Clients
+                .AsEnumerable() 
                 .Any(c => c.CliCourriel == loginDTO.LogCourriel && string.Equals(c.CliMotDePasse, loginDTO.LogMotDePasse, StringComparison.Ordinal));
 
             return hasSameEmailAndPasswordAsClient;
