@@ -84,12 +84,34 @@ namespace Projet_Hotel_CodeBase.Metier
 
             }
         }
+
+
+        public ClientDTO[] GetClientByEmail(ClientDTO clientDTO)
+        {
+            using (var db = new MyDbContext())
+            {
+                var client = db.Clients
+                    .Where(c => c.CliCourriel == clientDTO.CliCourriel)
+                    .Select(c => new ClientDTO
+                    {
+                         CliNom = c.CliNom,
+                         CliPrenom = c.CliPrenom,
+                         CliAddresseResidence = c.CliAddresseResidence,
+                         CliCourriel = c.CliCourriel,
+                         CliMotDePasse = c.CliMotDePasse,
+                         CliTelephoneMobile = c.CliTelephoneMobile,
+                         PkCliId = c.PkCliId
+                    })
+                    .ToArray();
+                return client;
+            }
+        }
+
         //Logan
         public ClientDTO[] GetClients()
         {
             using (var db = new MyDbContext())
             {
-
                 var clients = db.Clients.Select(c => new ClientDTO
                 {
                     CliNom = c.CliNom,
@@ -108,7 +130,6 @@ namespace Projet_Hotel_CodeBase.Metier
         {
             using (var db = new MyDbContext())
             {
-
                 var client = db.Clients
                              .Where(c => c.CliNom == clientDTO.CliNom || c.CliPrenom == clientDTO.CliPrenom)
                              .Select(c => new ClientDTO
