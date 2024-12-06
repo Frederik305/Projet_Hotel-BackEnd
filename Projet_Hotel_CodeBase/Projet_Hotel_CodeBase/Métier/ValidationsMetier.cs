@@ -65,6 +65,7 @@ namespace Projet_Hotel_CodeBase.Métier
         public bool IsRoomAvailable(ReservationDTO reservationDTO, MyDbContext db)
         {
             var reservationsChambre = db.Reservations.Where(r => r.Chambre.PkChaId == reservationDTO.FkChaId && r.PkResId != reservationDTO.PkResId).ToList();
+            
             foreach (var reservation in reservationsChambre)
             {
                 // Si la nouvelle réservation chevauche une réservation existante, la chambre n'est pas disponible

@@ -90,12 +90,12 @@ namespace Projet_Hotel_CodeBase.Metier
             {
                 if (!validationMetier.DoesRoomExist(reservationDTO.FkChaId, db))
                 {
-                    throw new Exception("La chambre spécifié n'existe pas.");
+                    throw new Exception(message:"La chambre spécifié n'existe pas.");
                 }
 
                 if (!validationMetier.IsRoomAvailable(reservationDTO, db))
                 {
-                    throw new Exception("Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
+                    throw new Exception(message:"Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
                 }
                 var chambre = db.Chambres.FirstOrDefault(c => c.PkChaId == reservationDTO.FkChaId);
                 var client = db.Clients.FirstOrDefault(c => c.PkCliId == reservationDTO.FkCliId);
