@@ -48,7 +48,21 @@ namespace Projet_Hotel_CodeBase.Controllers
             {
                 return BadRequest(e.Message);
             }
+        }
 
+        [Authorize]
+        [HttpPost("GetClientByEmail")]
+        public IActionResult GetClientByEmail([FromQuery] ClientDTO clientDTO)
+        {
+            try
+            {
+                ClientDTO[] client = clientMetier.GetClientByEmail(clientDTO);
+                return client.Length == 0 ? NotFound() : Ok(client);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
         }
 
         [Authorize]
