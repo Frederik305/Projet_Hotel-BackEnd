@@ -67,7 +67,7 @@ builder.Services.AddCors(options =>
 
 var app = builder.Build();
 
-//app.UseHttpsRedirection();
+
 app.UseWhen(context => context.Request.Method == "OPTIONS", appBuilder =>
 {
     appBuilder.UseCors("AllowAllOrigins");
