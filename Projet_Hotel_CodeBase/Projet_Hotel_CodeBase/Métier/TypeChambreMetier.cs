@@ -45,4 +45,23 @@ public class TypeChambreMetier
             };
         }
     }
+    public TypeChambreDTO GetTypeChambreById(TypeChambreDTO typeChambreDTO)
+    {
+        using (var db = new MyDbContext())
+        {
+            var typeChambre = db.TypeChambres
+                .Where(t => t.PkTypId == typeChambreDTO.PkTypId)
+                .Select(t => new TypeChambreDTO
+                {
+                    PkTypId = t.PkTypId,
+                    TypNomType = t.TypNomType,
+                    TypPrixPlancher = t.TypPrixPlancher,
+                    TypPrixPlafond = t.TypPrixPlafond,
+                    TypDescription = t.TypDescription
+                }).FirstOrDefault();
+            return typeChambre;
+        }
+    }
+
+    
 }

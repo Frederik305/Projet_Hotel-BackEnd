@@ -2,6 +2,7 @@
 using Microsoft.AspNetCore.Mvc;
 using Projet_Hotel_CodeBase.DTO;
 using Projet_Hotel_CodeBase.Metier;
+using Projet_Hotel_CodeBase.Métier;
 
 namespace Projet_Hotel_CodeBase.Controllers
 {
@@ -19,7 +20,7 @@ namespace Projet_Hotel_CodeBase.Controllers
 
         [Authorize]
         [HttpGet(Name = "GetTypeChambre")]
-        public IActionResult Get()
+        public IActionResult GetTypeChambres()
         {
             try
             {
@@ -31,9 +32,23 @@ namespace Projet_Hotel_CodeBase.Controllers
                 return BadRequest(e.Message);
             }
         }
+        [Authorize]
+        [HttpGet("/GetTypeChambreById")]
+        public IActionResult GetTypeChambreById([FromQuery] TypeChambreDTO typeChambreDTO)
+        {
+            try
+            {
+                TypeChambreDTO typeChambre = typeChambreMetier.GetTypeChambreById(typeChambreDTO);
+                return typeChambre == null ? NotFound() : Ok(typeChambre);
+            }
+            catch (Exception e)
+            {
+                return BadRequest(e.Message);
+            }
+        }
 
         [Authorize]
-        [HttpPost(Name = "PostNewTypeChambre")]
+        [HttpPost(Name = "AddTypeChambre")]
         public IActionResult AddTypeChambre(TypeChambreDTO typeChambreDTO)
         {
             try
