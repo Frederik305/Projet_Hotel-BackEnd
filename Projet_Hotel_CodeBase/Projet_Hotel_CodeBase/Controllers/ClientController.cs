@@ -51,7 +51,7 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [Authorize]
-        [HttpPost("GetClientByEmail")]
+        [HttpGet("GetClientByEmail")]
         public IActionResult GetClientByEmail([FromQuery] ClientDTO clientDTO)
         {
             try
