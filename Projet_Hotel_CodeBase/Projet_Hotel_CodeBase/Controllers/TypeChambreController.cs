@@ -27,9 +27,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 TypeChambreDTO[] typeChambre = typeChambreMetier.GetTypeChambres();
                 return typeChambre.Length == 0 ? NotFound() : Ok(typeChambre);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
         [Authorize]
@@ -41,9 +41,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 TypeChambreDTO typeChambre = typeChambreMetier.GetTypeChambreById(PkTypId);
                 return typeChambre == null ? NotFound() : Ok(typeChambre);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -56,9 +56,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 TypeChambreDTO newTypeChambre = typeChambreMetier.AddTypeChambre(typeChambreDTO);
                 return newTypeChambre == null ? NotFound() : Ok(newTypeChambre);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
     }

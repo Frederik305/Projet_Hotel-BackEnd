@@ -35,9 +35,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 // return access token for user's use
                 return Ok(new { AccessToken = new JwtSecurityTokenHandler().WriteToken(token) });
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
 
         }

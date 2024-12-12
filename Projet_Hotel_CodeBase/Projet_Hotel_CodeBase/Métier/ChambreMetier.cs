@@ -92,7 +92,7 @@ namespace Projet_Hotel_CodeBase.Métier
             {
                 if (!new ValidationsMetier().DoesRoomExist(chambreDTO.PkChaId, db))
                 {
-                    throw new Exception("La chambre spécifié n'existe pas.");
+                    throw new Exception(message:"La chambre spécifié n'existe pas.");
                 }
 
                 var chambre = db.Chambres.FirstOrDefault(c => c.PkChaId == chambreDTO.PkChaId);

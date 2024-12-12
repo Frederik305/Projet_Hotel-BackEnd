@@ -13,11 +13,11 @@ namespace Projet_Hotel_CodeBase.Metier
             {
                 if (validationsMetier.EmailExists(clientDTO, db))
                 {
-                    throw new Exception("Courriel déjà utiliser");
+                    throw new Exception(message:"Courriel déjà utiliser");
                 }
                 if (validationsMetier.TelephoneExists(clientDTO, db))
                 {
-                    throw new Exception("Telephone déjà utiliser");
+                    throw new Exception(message: "Telephone déjà utiliser");
                 }
                 var nouveauClient = new Client
                 {
@@ -53,11 +53,11 @@ namespace Projet_Hotel_CodeBase.Metier
             {
                 if (!validationsMetier.IsCurrentClientEmail(clientDTO, db))
                 {
-                    throw new Exception("Courriel déjà utiliser");
+                    throw new Exception(message:"Courriel déjà utiliser");
                 }
                 if (!validationsMetier.IsCurrentClientPhone(clientDTO, db))
                 {
-                    throw new Exception("Telephone déjà utiliser");
+                    throw new Exception(message: "Telephone déjà utiliser");
                 }
 
                 var client = db.Clients.FirstOrDefault(c => c.PkCliId == cli.PkCliId);
@@ -86,7 +86,7 @@ namespace Projet_Hotel_CodeBase.Metier
         }
 
 
-        public ClientDTO[] GetClientByEmail(ClientDTO clientDTO)
+        public ClientDTO GetClientByEmail(ClientDTO clientDTO)
         {
             using (var db = new MyDbContext())
             {
@@ -101,8 +101,8 @@ namespace Projet_Hotel_CodeBase.Metier
                          CliMotDePasse = c.CliMotDePasse,
                          CliTelephoneMobile = c.CliTelephoneMobile,
                          PkCliId = c.PkCliId
-                    })
-                    .ToArray();
+                    }).FirstOrDefault();
+                if (client ==null) { throw new Exception(message: "L'adresse courriel entré n'est relié à aucun client."); }
                 return client;
             }
         }

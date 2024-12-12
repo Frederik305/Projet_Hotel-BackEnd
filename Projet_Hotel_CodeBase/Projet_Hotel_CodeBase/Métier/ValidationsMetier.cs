@@ -12,6 +12,11 @@ namespace Projet_Hotel_CodeBase.Métier
 
             return hasSameEmailAndPasswordAsClient;
         }
+        public bool IsStartDateBeforeEndDate(ReservationDTO reservationDTO)
+        {
+            return reservationDTO.ResDateDebut < reservationDTO.ResDateFin;
+            
+        }
 
         public bool TelephoneExists(ClientDTO clientDTO, MyDbContext db)
         {

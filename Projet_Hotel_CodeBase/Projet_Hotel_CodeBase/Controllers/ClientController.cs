@@ -29,9 +29,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ClientDTO nouveauClient = clientMetier.AddClient(clientDTO);
                 return nouveauClient == null ? NotFound() : Ok(nouveauClient);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -44,9 +44,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ClientDTO nouveauClient = clientMetier.ModifierClient(clientDTO);
                 return nouveauClient == null ? NotFound() : Ok(nouveauClient);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -56,12 +56,12 @@ namespace Projet_Hotel_CodeBase.Controllers
         {
             try
             {
-                ClientDTO[] client = clientMetier.GetClientByEmail(clientDTO);
-                return client.Length == 0 ? NotFound() : Ok(client);
+                ClientDTO client = clientMetier.GetClientByEmail(clientDTO);
+                return Ok(client);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -74,9 +74,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ClientDTO[] client = clientMetier.GetClientByName(clientDTO);
                 return client.Length == 0 ? NotFound() : Ok(client);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -90,9 +90,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ClientDTO client = clientMetier.GetClientById(clientDTO);
                 return client == null ? NotFound() : Ok(client);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -105,9 +105,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ClientDTO[] client = clientMetier.GetClients();
                 return client.Length == 0 ? NotFound() : Ok(client);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
     }

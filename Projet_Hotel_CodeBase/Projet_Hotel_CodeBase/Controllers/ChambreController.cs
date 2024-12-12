@@ -28,9 +28,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ChambreDTO[] chambre = chambreMetier.RequestChambres();
                 return chambre.Length == 0 ? NotFound() : Ok(chambre);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -43,9 +43,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ChambreDTO[] chambre = chambreMetier.RequestChambreByNum(chambreDTO);
                 return chambre.Length == 0 ? NotFound() : Ok(chambre);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -58,9 +58,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ChambreDTO chambre = chambreMetier.GetChambreById(chambreDTO);
                 return chambre == null ? NotFound() : Ok(chambre);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -73,9 +73,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ChambreDTO newChambre = chambreMetier.AddChambre(chambreDTO);
                 return newChambre == null ? NotFound() : Ok(newChambre);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 
@@ -93,7 +93,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
             catch (Exception ex)
             {
-                return Conflict(ex.Message);
+                return Conflict(new { message = ex.Message });
             }
 
 
@@ -112,7 +112,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
             catch (Exception ex)
             {
-                return Conflict(ex.Message);
+                return Conflict(new { message = ex.Message });
             }
         }
     }
