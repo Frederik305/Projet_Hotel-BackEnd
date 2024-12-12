@@ -31,7 +31,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
             catch (Exception ex)
             {
-                return Conflict(ex.Message);
+                return Conflict(new { message = ex.Message });
             }
 
 
@@ -51,7 +51,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             }
             catch (Exception ex)
             {
-                return Conflict(ex.Message);
+                return Conflict(new { message = ex.Message });
             }
 
 
@@ -66,9 +66,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ReservationDTO[] reservations = serviceReservation.GetReservations();
                 return reservations.Length == 0 ? NotFound() : Ok(reservations);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
             //return serviceReservation.GetReservations();
         }
@@ -82,9 +82,9 @@ namespace Projet_Hotel_CodeBase.Controllers
                 ReservationDTO[] reservations = serviceReservation.SearchReservation(reservationDTO);
                 return reservations.Length == 0 ? NotFound() : Ok(reservations);
             }
-            catch (Exception e)
+            catch (Exception ex)
             {
-                return BadRequest(e.Message);
+                return BadRequest(new { message = ex.Message });
             }
             
         }
@@ -106,7 +106,7 @@ namespace Projet_Hotel_CodeBase.Controllers
             catch (Exception ex)
             {
 
-                return BadRequest(ex.Message);
+                return BadRequest(new { message = ex.Message });
             }
         }
 

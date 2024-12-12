@@ -47,19 +47,24 @@ namespace Projet_Hotel_CodeBase.Metier
 
                 if (!validationMetier.DoesReservationExist(reservationDTO, db))
                 {
-                    throw new Exception("La reservation spécifié n'existe pas.");
+                    throw new Exception(message: "La reservation spécifié n'existe pas.");
                 }
 
                 if (!validationMetier.DoesRoomExist(reservationDTO.FkChaId, db))
                 {
-                    throw new Exception("La chambre spécifié n'existe pas.");
+                    throw new Exception(message: "La chambre spécifié n'existe pas.");
                 }
 
 
                 if (!validationMetier.IsRoomAvailable(reservationDTO, db))
                 {
-                    throw new Exception("Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
+                    throw new Exception(message: "Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
                 }
+                if (!validationMetier.IsStartDateBeforeEndDate(reservationDTO))
+                {
+                    throw new Exception(message:"La date de début de la réservation doit être avant la date de fin de la reservation");
+                }
+                
                 var reservation = db.Reservations.FirstOrDefault(r => r.PkResId == reservationDTO.PkResId);
 
                 reservation.ResDateDebut = (DateTime)reservationDTO.ResDateDebut;
@@ -96,6 +101,10 @@ namespace Projet_Hotel_CodeBase.Metier
                 if (!validationMetier.IsRoomAvailable(reservationDTO, db))
                 {
                     throw new Exception(message:"Les dates de la réservation ne concordent pas avec la diponibilité de la chambre");
+                }
+                if (!validationMetier.IsStartDateBeforeEndDate(reservationDTO))
+                {
+                    throw new Exception(message: "La date de début de la réservation doit être avant la date de fin de la reservation");
                 }
                 var chambre = db.Chambres.FirstOrDefault(c => c.PkChaId == reservationDTO.FkChaId);
                 var client = db.Clients.FirstOrDefault(c => c.PkCliId == reservationDTO.FkCliId);

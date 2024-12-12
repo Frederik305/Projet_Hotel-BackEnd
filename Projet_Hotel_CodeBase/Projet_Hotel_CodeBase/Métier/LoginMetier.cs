@@ -11,7 +11,7 @@ namespace Projet_Hotel_CodeBase.Métier
                 ValidationsMetier validations = new ValidationsMetier();
                 if (!validations.IsValidClient(loginDTO, db))
                 {
-                    throw new Exception("Informations invalide");
+                    throw new Exception(message:"Informations invalide");
                 }
                 return loginDTO;
             }
