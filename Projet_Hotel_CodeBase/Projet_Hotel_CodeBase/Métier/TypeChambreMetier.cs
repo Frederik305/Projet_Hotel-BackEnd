@@ -45,12 +45,12 @@ public class TypeChambreMetier
             };
         }
     }
-    public TypeChambreDTO GetTypeChambreById(TypeChambreDTO typeChambreDTO)
+    public TypeChambreDTO GetTypeChambreById(Guid PkTypId)
     {
         using (var db = new MyDbContext())
         {
             var typeChambre = db.TypeChambres
-                .Where(t => t.PkTypId == typeChambreDTO.PkTypId)
+                .Where(t => t.PkTypId == PkTypId)
                 .Select(t => new TypeChambreDTO
                 {
                     PkTypId = t.PkTypId,
