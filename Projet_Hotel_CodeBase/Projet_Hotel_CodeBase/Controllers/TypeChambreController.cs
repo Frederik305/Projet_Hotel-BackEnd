@@ -34,11 +34,11 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
         [Authorize]
         [HttpGet("/GetTypeChambreById")]
-        public IActionResult GetTypeChambreById([FromQuery] TypeChambreDTO typeChambreDTO)
+        public IActionResult GetTypeChambreById([FromQuery] Guid PkTypId)
         {
             try
             {
-                TypeChambreDTO typeChambre = typeChambreMetier.GetTypeChambreById(typeChambreDTO);
+                TypeChambreDTO typeChambre = typeChambreMetier.GetTypeChambreById(PkTypId);
                 return typeChambre == null ? NotFound() : Ok(typeChambre);
             }
             catch (Exception e)
