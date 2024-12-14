@@ -14,8 +14,10 @@ namespace Projet_Hotel_CodeBase.Controllers
     {
         private readonly ILogger<LoginController> _logger;
         private readonly IConfiguration _configuration;
-        private LoginMetier loginMetier = new LoginMetier();
+        // Instance de la couche métier pour la gestion des connexions
+        private readonly LoginMetier loginMetier = new LoginMetier();
 
+        // Constructeur pour injecter les services nécessaires : logger et configuration
         public LoginController(ILogger<LoginController> logger, IConfiguration configuration)
         {
             _logger = logger;
@@ -23,46 +25,50 @@ namespace Projet_Hotel_CodeBase.Controllers
         }
 
         [HttpPost("login")]
+        // Méthode d'authentification de l'utilisateur
         public IActionResult Login([FromBody] LoginDTO loginDTO)
         {
             try
             {
-                // Check user credentials in DataBase
+                // Vérifie les informations d'identification de l'utilisateur dans la base de données
                 LoginDTO nouveauLoginDTO = loginMetier.login(loginDTO);
 
-                // generate token for user
+                // Génère un jeton d'accès pour l'utilisateur si les informations sont valides
                 var token = GenerateAccessToken(loginDTO.LogCourriel);
-                // return access token for user's use
+
+                // Renvoie le jeton d'accès sous forme de réponse JSON
                 return Ok(new { AccessToken = new JwtSecurityTokenHandler().WriteToken(token) });
             }
             catch (Exception ex)
             {
+                // En cas d'erreur (comme des informations incorrectes), renvoie un message d'erreur
                 return BadRequest(new { message = ex.Message });
             }
 
         }
+
+        // Cette méthode génère un jeton JWT pour l'utilisateur
         private JwtSecurityToken GenerateAccessToken(string courriel)
         {
-
+            // Création des informations du jeton (les "claims" ou revendications)
             var claims = new List<Claim>
             {
-                new Claim(ClaimTypes.Name, courriel),
+                new Claim(ClaimTypes.Name, courriel), // Ajout de l'email de l'utilisateur en tant que revendication
 
             };
 
-            // Create a JWT
+            // Création du JWT avec les paramètres : émetteur, audience, revendiations, expiration, et signature
             var token = new JwtSecurityToken(
-
-                 issuer: _configuration["JwtSettings:Issuer"],
-                 audience: _configuration["JwtSettings:Audience"],
-                 claims: claims,
-                 expires: DateTime.UtcNow.AddMinutes(120), // Token expiration time
-                 signingCredentials: new SigningCredentials(new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"])),
-                     SecurityAlgorithms.HmacSha256));
-
-
+                             issuer: _configuration["JwtSettings:Issuer"],              // L'émetteur du jeton
+                             audience: _configuration["JwtSettings:Audience"],          // L'audience du jeton
+                             claims: claims,                                            // Les revendications associées à l'utilisateur
+                             expires: DateTime.UtcNow.AddMinutes(120),                  // Durée de validité du jeton (2 heures)
+                             signingCredentials: new SigningCredentials(
+                                 new SymmetricSecurityKey(Encoding.UTF8.GetBytes(_configuration["JwtSettings:SecretKey"])),     // Clé secrète pour la signature
+                                 SecurityAlgorithms.HmacSha256)                                                                 // Algorithme de signature utilisé
+            );
+            // Retourne le jeton généré
             return token;
         }
-
     }
 }
